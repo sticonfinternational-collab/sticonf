@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STICONF 2026 | Sponsorship</title>
+    <meta name="description" content="Sponsor STICONF 2026 — align your brand with Africa's premier Science, Technology & Innovation conference.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config={theme:{extend:{colors:{dark:{900:'#050816',800:'#0a0f24',700:'#111832',600:'#1a2040'},accent:{cyan:'#00b4d8',purple:'#7c3aed',blue:'#3b82f6',amber:'#f59e0b',emerald:'#10b981'}},fontFamily:{heading:['Space Grotesk','sans-serif'],body:['Inter','sans-serif'],mono:['JetBrains Mono','monospace']}}}}
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        ::selection{background:#7c3aed;color:#fff}
+        body{font-family:'Inter',sans-serif;background:#050816;color:#e2e8f0;overflow-x:hidden}
+        h1,h2,h3,h4,h5,h6{font-family:'Space Grotesk',sans-serif}
+
+        /* ===== LOADER ===== */
+        #loader{position:fixed;inset:0;z-index:9999;background:#050816;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+        #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .loader-logo{width:100px;height:100px;position:relative}
+        .loader-hex{position:absolute;inset:0;animation:hexSpin 2s ease-in-out infinite}
+        .loader-hex svg{width:100%;height:100%}
+        .loader-ring{position:absolute;inset:-12px;border:2px solid transparent;border-top-color:#00b4d8;border-radius:50%;animation:ringRotate 1.5s linear infinite}
+        .loader-ring:nth-child(2){inset:-22px;border-top-color:#7c3aed;animation-duration:2s;animation-direction:reverse}
+        .loader-text{margin-top:32px;font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:6px;text-transform:uppercase;color:#64748b;overflow:hidden}
+        .loader-text span{display:inline-block;transform:translateY(100%);opacity:0}
+        .loader-sub{margin-top:12px;font-size:11px;letter-spacing:3px;color:#475569;opacity:0}
+        .loader-bar{width:200px;height:2px;background:rgba(255,255,255,.06);margin-top:40px;border-radius:2px;overflow:hidden}
+        .loader-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#00b4d8,#7c3aed);border-radius:2px;transition:width .3s}
+        @keyframes hexSpin{0%,100%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.05)}}
+        @keyframes ringRotate{to{transform:rotate(360deg)}}
+
+        /* ===== PARTICLES ===== */
+        #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+        /* ===== NAVBAR ===== */
+        #navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .4s cubic-bezier(.16,1,.3,1)}
+        #navbar.scrolled{padding:12px 0;background:rgba(5,8,22,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .nav-link{position:relative;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;transition:color .3s;padding:4px 0;text-decoration:none}
+        .nav-link:hover,.nav-link.active{color:#fff}
+        .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#00b4d8,#7c3aed);transition:width .3s}
+        .nav-link:hover::after,.nav-link.active::after{width:100%}
+
+        /* ===== MOBILE MENU ===== */
+        #mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(5,8,22,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(100%);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+        #mobile-menu.open{transform:translateX(0)}
+        .mobile-link{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:#94a3b8;transition:color .3s,transform .3s;text-transform:uppercase;letter-spacing:2px;text-decoration:none}
+        .mobile-link:hover{color:#fff;transform:translateX(8px)}
+
+        /* ===== UTILITIES ===== */
+        .gradient-text{background:linear-gradient(135deg,#00b4d8 0%,#7c3aed 50%,#00b4d8 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 4s ease-in-out infinite}
+        @keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:200% center}}
+        .glass{background:rgba(255,255,255,.03);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.06);border-radius:16px;transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .glass:hover{background:rgba(255,255,255,.06);border-color:rgba(0,180,216,.15);transform:translateY(-4px);box-shadow:0 20px 60px -15px rgba(0,180,216,.1)}
+        .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,#00b4d8,#7c3aed);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;border:none;border-radius:12px;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;text-decoration:none}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px -8px rgba(0,180,216,.4)}
+        .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#7c3aed,#00b4d8);opacity:0;transition:opacity .3s}
+        .btn-primary:hover::before{opacity:1}
+        .btn-primary span,.btn-primary i{position:relative;z-index:1}
+        .btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;color:#e2e8f0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);border-radius:12px;cursor:pointer;transition:all .3s;text-decoration:none}
+        .btn-outline:hover{border-color:#00b4d8;color:#00b4d8;background:rgba(0,180,216,.05);transform:translateY(-2px)}
+        .float-shape{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.4}
+        .scroll-indicator{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#00b4d8,#7c3aed);z-index:101;transform-origin:left;transform:scaleX(0)}
+        .section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
+        .reveal{opacity:0;transform:translateY(40px)}
+
+        /* ===== TIER CARDS ===== */
+        .tier-card{position:relative;padding:40px 32px;border-radius:20px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);transition:all .5s cubic-bezier(.16,1,.3,1);overflow:hidden}
+        .tier-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.12)}
+        .tier-glow{position:absolute;top:-50%;left:-50%;width:200%;height:200%;opacity:0;transition:opacity .5s;pointer-events:none}
+        .tier-card:hover .tier-glow{opacity:1}
+        .tier-platinum .tier-glow{background:radial-gradient(circle at center,rgba(0,180,216,.1),transparent 50%)}
+        .tier-gold .tier-glow{background:radial-gradient(circle at center,rgba(245,158,11,.1),transparent 50%)}
+        .tier-silver .tier-glow{background:radial-gradient(circle at center,rgba(148,163,184,.08),transparent 50%)}
+        .tier-bronze .tier-glow{background:radial-gradient(circle at center,rgba(180,120,60,.08),transparent 50%)}
+        .tier-badge{display:inline-block;padding:4px 14px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+        .tier-platinum .tier-badge{background:rgba(0,180,216,.15);color:#00b4d8;border:1px solid rgba(0,180,216,.2)}
+        .tier-gold .tier-badge{background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
+        .tier-silver .tier-badge{background:rgba(148,163,184,.15);color:#94a3b8;border:1px solid rgba(148,163,184,.2)}
+        .tier-bronze .tier-badge{background:rgba(180,120,60,.15);color:#b4783c;border:1px solid rgba(180,120,60,.2)}
+
+        /* ===== TOAST ===== */
+        .toast{position:fixed;bottom:32px;right:32px;z-index:10000;padding:16px 24px;border-radius:12px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:#10b981;font-size:14px;font-weight:500;transform:translateY(120%);opacity:0;transition:all .5s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:10px;backdrop-filter:blur(12px)}
+        .toast.show{transform:translateY(0);opacity:1}
+        .toast.error{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:#ef4444}
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#050816}
+        ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.2)}
+    </style>
+</head>
+<body>
+
+<div class="scroll-indicator" id="scrollProgress"></div>
+
+<!-- ===== LOADER ===== -->
+<div id="loader">
+    <div class="loader-logo">
+        <div class="loader-ring"></div>
+        <div class="loader-ring"></div>
+        <div class="loader-hex">
+            <svg viewBox="0 0 100 100" fill="none">
+                <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="url(#lg)" stroke-width="2" fill="none"/>
+                <text x="50" y="46" text-anchor="middle" fill="#00b4d8" font-family="Space Grotesk" font-size="18" font-weight="700">STI</text>
+                <text x="50" y="62" text-anchor="middle" fill="#7c3aed" font-family="Space Grotesk" font-size="10" font-weight="500">CONF</text>
+                <defs><linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00b4d8"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+            </svg>
+        </div>
+    </div>
+    <div class="loader-text"><span>The Official Website of STICONF</span></div>
+    <div class="loader-sub">International Conference on Science, Technology & Innovation</div>
+    <div class="loader-bar"><div class="loader-bar-fill" id="loaderBar"></div></div>
+</div>
+
+<!-- ===== PARTICLES ===== -->
+<canvas id="particles"></canvas>
+
+<!-- ===== MOBILE MENU ===== -->
+<div id="mobile-menu">
+    <a href="{% url "home" %}" class="mobile-link" onclick="closeMobile()">Home</a>
+    <a href="{% url "about" %}" class="mobile-link" onclick="closeMobile()">About</a>
+    <a href="{% url "schedule" %}" class="mobile-link" onclick="closeMobile()">Schedule</a>
+    <a href="{% url "sponsorship" %}" class="mobile-link" onclick="closeMobile()">Sponsorship</a>
+    <a href="{% url "register" %}" class="mobile-link" onclick="closeMobile()">Registration</a>
+    <a href="{% url "contact" %}" class="mobile-link" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <a href="{% url "home" %}" class="flex items-center gap-3 group"><img src="{% static 'images/logo.png' %}" alt="STICONF Logo" class="w-8 h-8 object-contain group-hover:rotate-12 transition-transform"><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF <span class="text-accent-cyan">2026</span></span></a>
+        <div class="hidden lg:flex items-center gap-8">
+            <a href="{% url "home" %}" class="nav-link">Home</a>
+            <a href="{% url "about" %}" class="nav-link">About</a>
+            <a href="{% url "schedule" %}" class="nav-link">Schedule</a>
+            <a href="{% url "sponsorship" %}" class="nav-link active">Sponsorship</a>
+            <a href="{% url "register" %}" class="nav-link">Registration</a>
+            <a href="{% url "contact" %}" class="nav-link">Contact</a>
+        </div>
+        <div class="hidden lg:block"><a href="{% url "register" %}" class="btn-primary text-xs"><span>Register Now</span></a></div>
+        <button id="menuToggle" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" onclick="toggleMobile()">
+            <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center" id="bar1"></span>
+            <span class="w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
+            <span class="w-4 h-0.5 bg-white transition-all duration-300 origin-center" id="bar3"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <div class="float-shape w-96 h-96 bg-accent-amber top-0 -right-48" style="opacity:.12"></div>
+    <div class="float-shape w-72 h-72 bg-accent-purple bottom-0 -left-36" style="opacity:.08"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-amber mb-6">Partner With Us</span>
+        <h1 class="reveal font-heading font-bold leading-[1.05] tracking-tight mb-6" style="font-size:clamp(2.2rem,5.5vw,4.5rem)">Sponsorship <span class="gradient-text">Opportunities</span></h1>
+        <p class="reveal text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">Align your brand with Africa's premier STI conference. Reach decision-makers across academia, industry, government, and the investment community.</p>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== WHY SPONSOR ===== -->
+<section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-cyan mb-4">The Value</span>
+            <h2 class="reveal font-heading text-3xl md:text-4xl font-bold text-white">Why Sponsor <span class="gradient-text">STICONF 2026</span>?</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="reveal glass p-7 group">
+                <div class="w-10 h-10 rounded-lg bg-accent-cyan/10 flex items-center justify-center mb-4 group-hover:bg-accent-cyan/20 transition-colors"><i data-lucide="users" class="w-5 h-5 text-accent-cyan"></i></div>
+                <h3 class="font-heading font-semibold text-white text-sm mb-2">500+ Delegates</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">Direct access to researchers, industry leaders, policymakers, and investors</p>
+            </div>
+            <div class="reveal glass p-7 group">
+                <div class="w-10 h-10 rounded-lg bg-accent-purple/10 flex items-center justify-center mb-4 group-hover:bg-accent-purple/20 transition-colors"><i data-lucide="eye" class="w-5 h-5 text-accent-purple"></i></div>
+                <h3 class="font-heading font-semibold text-white text-sm mb-2">Brand Visibility</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">Logo placement across all materials, media, and digital platforms</p>
+            </div>
+            <div class="reveal glass p-7 group">
+                <div class="w-10 h-10 rounded-lg bg-accent-amber/10 flex items-center justify-center mb-4 group-hover:bg-accent-amber/20 transition-colors"><i data-lucide="megaphone" class="w-5 h-5 text-accent-amber"></i></div>
+                <h3 class="font-heading font-semibold text-white text-sm mb-2">Thought Leadership</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">Speaking slots and panel participation to showcase your expertise</p>
+            </div>
+            <div class="reveal glass p-7 group">
+                <div class="w-10 h-10 rounded-lg bg-accent-emerald/10 flex items-center justify-center mb-4 group-hover:bg-accent-emerald/20 transition-colors"><i data-lucide="handshake" class="w-5 h-5 text-accent-emerald"></i></div>
+                <h3 class="font-heading font-semibold text-white text-sm mb-2">Partnership Deals</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">Direct networking leading to MOUs, deals, and collaborations</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== SPONSORSHIP TIERS ===== -->
+<section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="float-shape w-80 h-80 bg-accent-amber -top-20 right-0" style="opacity:.06"></div>
+    <div class="float-shape w-64 h-64 bg-accent-cyan bottom-20 -left-32" style="opacity:.06"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-purple mb-4">Choose Your Tier</span>
+            <h2 class="reveal font-heading text-3xl md:text-4xl font-bold text-white">Sponsorship <span class="gradient-text">Packages</span></h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Platinum -->
+            <div class="reveal tier-card tier-platinum lg:scale-105">
+                <div class="tier-glow"></div>
+                <div class="relative z-10">
+                    <span class="tier-badge">Platinum</span>
+                    <div class="mt-6 mb-2 font-heading text-4xl font-bold text-white">₦10M<span class="text-base font-normal text-slate-500">+</span></div>
+                    <p class="text-slate-500 text-sm mb-6">Exclusive top-tier partnership</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0 mt-0.5"></i>Title sponsorship recognition</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0 mt-0.5"></i>Keynote speaking slot</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0 mt-0.5"></i>Premium exhibition booth</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0 mt-0.5"></i>Full-page ad in conference materials</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0 mt-0.5"></i>10 VIP delegate passes</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0 mt-0.5"></i>Logo on all branding & media</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-cyan flex-shrink-0 mt-0.5"></i>Dedicated social media features</li>
+                    </ul>
+                    <button onclick="openPaymentModal('platinum')" class="btn-primary w-full justify-center text-xs"><span>Become Platinum</span></button>
+                </div>
+            </div>
+            <!-- Gold -->
+            <div class="reveal tier-card tier-gold">
+                <div class="tier-glow"></div>
+                <div class="relative z-10">
+                    <span class="tier-badge">Gold</span>
+                    <div class="mt-6 mb-2 font-heading text-4xl font-bold text-white">₦5M<span class="text-base font-normal text-slate-500">+</span></div>
+                    <p class="text-slate-500 text-sm mb-6">Premium visibility package</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-amber flex-shrink-0 mt-0.5"></i>Co-sponsorship recognition</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-amber flex-shrink-0 mt-0.5"></i>Panel participation slot</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-amber flex-shrink-0 mt-0.5"></i>Large exhibition booth</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-amber flex-shrink-0 mt-0.5"></i>Half-page ad in materials</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-amber flex-shrink-0 mt-0.5"></i>6 VIP delegate passes</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-accent-amber flex-shrink-0 mt-0.5"></i>Logo on key branding</li>
+                    </ul>
+                    <button onclick="openPaymentModal('gold')" class="btn-outline w-full justify-center text-xs" style="border-color:rgba(245,158,11,.3);color:#f59e0b">Become Gold</button>
+                </div>
+            </div>
+            <!-- Silver -->
+            <div class="reveal tier-card tier-silver">
+                <div class="tier-glow"></div>
+                <div class="relative z-10">
+                    <span class="tier-badge">Silver</span>
+                    <div class="mt-6 mb-2 font-heading text-4xl font-bold text-white">₦2M<span class="text-base font-normal text-slate-500">+</span></div>
+                    <p class="text-slate-500 text-sm mb-6">Strong brand presence</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5"></i>Sponsorship recognition</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5"></i>Standard exhibition booth</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5"></i>Quarter-page ad in materials</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5"></i>4 delegate passes</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-slate-400 flex-shrink-0 mt-0.5"></i>Logo on select materials</li>
+                    </ul>
+                    <button onclick="openPaymentModal('silver')" class="btn-outline w-full justify-center text-xs">Become Silver</button>
+                </div>
+            </div>
+            <!-- Bronze -->
+            <div class="reveal tier-card tier-bronze">
+                <div class="tier-glow"></div>
+                <div class="relative z-10">
+                    <span class="tier-badge">Bronze</span>
+                    <div class="mt-6 mb-2 font-heading text-4xl font-bold text-white">₦1M<span class="text-base font-normal text-slate-500">+</span></div>
+                    <p class="text-slate-500 text-sm mb-6">Community engagement</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-700 flex-shrink-0 mt-0.5"></i>Sponsorship mention</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-700 flex-shrink-0 mt-0.5"></i>Shared exhibition space</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-700 flex-shrink-0 mt-0.5"></i>2 delegate passes</li>
+                        <li class="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-700 flex-shrink-0 mt-0.5"></i>Logo on website</li>
+                    </ul>
+                    <button onclick="openPaymentModal('bronze')" class="btn-outline w-full justify-center text-xs">Become Bronze</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== ALL SPONSORS RECEIVE ===== -->
+<section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="reveal glass p-8 md:p-12">
+            <div class="flex items-start gap-4 mb-8">
+                <div class="w-10 h-10 rounded-lg bg-accent-amber/10 flex items-center justify-center flex-shrink-0 mt-1"><i data-lucide="gift" class="w-5 h-5 text-accent-amber"></i></div>
+                <h2 class="font-heading text-xl font-bold text-white">All Sponsors Receive</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[.02] border border-white/5">
+                    <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-4 h-4 text-accent-cyan"></i></div>
+                    <div><h4 class="text-white text-sm font-semibold mb-1">Logo on Conference Website</h4><p class="text-slate-500 text-xs leading-relaxed">Permanent placement on the official STICONF 2026 website</p></div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[.02] border border-white/5">
+                    <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-4 h-4 text-accent-cyan"></i></div>
+                    <div><h4 class="text-white text-sm font-semibold mb-1">Social Media Mentions</h4><p class="text-slate-500 text-xs leading-relaxed">Acknowledgement across all pre-event and live social media coverage</p></div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[.02] border border-white/5">
+                    <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-4 h-4 text-accent-cyan"></i></div>
+                    <div><h4 class="text-white text-sm font-semibold mb-1">Delegate List Access</h4><p class="text-slate-500 text-xs leading-relaxed">Receive the full attendee list post-event for follow-up outreach</p></div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[.02] border border-white/5">
+                    <div class="w-8 h-8 rounded-lg bg-accent-cyan/10 flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-4 h-4 text-accent-cyan"></i></div>
+                    <div><h4 class="text-white text-sm font-semibold mb-1">Post-Event Report</h4><p class="text-slate-500 text-xs leading-relaxed">Comprehensive report with analytics, feedback, and media coverage summary</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== CUSTOM SPONSORSHIP CTA ===== -->
+<section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="float-shape w-80 h-80 bg-accent-cyan top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:.06"></div>
+    <div class="max-w-3xl mx-auto px-6 text-center">
+        <div class="reveal glass p-10 md:p-14">
+            <i data-lucide="puzzle" class="w-10 h-10 text-accent-amber mx-auto mb-6"></i>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold text-white mb-4">Need a Custom Package?</h2>
+            <p class="text-slate-400 leading-relaxed mb-8">We understand every organisation has unique needs. Let's discuss a tailored sponsorship arrangement that aligns with your goals and budget.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="{% url "contact" %}" class="btn-primary"><span>Discuss Custom Package</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                <a href="mailto:sponsorship@sticonf.com" class="btn-outline"><span>sponsorship@sticonf.com</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PAYMENT MODAL ===== -->
+<div id="paymentModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closePaymentModal(event)">
+    <div class="glass w-full max-w-md p-8 rounded-20px relative" onclick="event.stopPropagation()">
+        <button onclick="closePaymentModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-lg transition-colors">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        
+        <h2 class="font-heading text-2xl font-bold text-white mb-6">Sponsorship Payment</h2>
+        
+        <form id="paymentForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-white mb-2">Company Name <span class="text-red-500">*</span></label>
+                <input type="text" name="company_name" id="companyName" required class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-accent-cyan" placeholder="Your company name">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-white mb-2">Contact Person <span class="text-red-500">*</span></label>
+                <input type="text" name="contact_name" id="contactName" required class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-accent-cyan" placeholder="Your full name">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-white mb-2">Email <span class="text-red-500">*</span></label>
+                <input type="email" name="email" id="paymentEmail" required class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-accent-cyan" placeholder="your@email.com">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-white mb-2">Phone Number <span class="text-red-500">*</span></label>
+                <input type="tel" name="phone" id="paymentPhone" required class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-accent-cyan" placeholder="+234...">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-white mb-2">Country</label>
+                <input type="text" name="country" id="paymentCountry" class="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-accent-cyan" placeholder="Nigeria" value="Nigeria">
+            </div>
+            
+            <div class="bg-white/5 border border-white/10 rounded-lg p-4 mt-6">
+                <p class="text-slate-400 text-sm mb-2">Sponsorship Tier:</p>
+                <p id="tierDisplay" class="font-heading text-xl font-bold text-accent-cyan mb-3">-</p>
+                <p class="text-slate-400 text-sm mb-2">Amount to Pay:</p>
+                <p class="font-heading text-2xl font-bold text-white">₦<span id="amountDisplay">0</span></p>
+            </div>
+            
+            <button type="submit" class="btn-primary w-full justify-center mt-8">
+                <span>Proceed to Payment</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            
+            <p class="text-xs text-slate-500 text-center mt-4">Secure payment powered by <strong>Flutterwave</strong></p>
+        </form>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="relative py-16 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="lg:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <svg viewBox="0 0 100 100" fill="none" class="w-10 h-10">
+                        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="url(#fg)" stroke-width="2" fill="none"/>
+                        <text x="50" y="46" text-anchor="middle" fill="#00b4d8" font-family="Space Grotesk" font-size="18" font-weight="700">STI</text>
+                        <text x="50" y="62" text-anchor="middle" fill="#7c3aed" font-family="Space Grotesk" font-size="10" font-weight="500">CONF</text>
+                        <defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00b4d8"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+                    </svg>
+                    <div>
+                        <span class="font-heading font-bold text-white text-sm tracking-wider">STICONF 2026</span>
+                        <p class="text-[10px] text-slate-500 tracking-widest uppercase">Science · Technology · Innovation</p>
+                    </div>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-4">Catalysing effective linkages between research institutions and industry for accelerated development.</p>
+                <p class="text-xs text-slate-600">March 2026 · Abuja, Nigeria</p>
+            </div>
+            <div>
+                <h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="{% url "home" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Home</a></li>
+                    <li><a href="{% url "about" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">About</a></li>
+                    <li><a href="{% url "schedule" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Schedule</a></li>
+                    <li><a href="{% url "sponsorship" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Sponsorship</a></li>
+                    <li><a href="{% url "register" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Registration</a></li>
+                    <li><a href="{% url "contact" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Connect</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-3.5 h-3.5"></i>Twitter / X</a></li>
+                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-3.5 h-3.5"></i>Instagram</a></li>
+                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i>LinkedIn</a></li>
+                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-3.5 h-3.5"></i>Facebook</a></li>
+                </ul>
+                <div class="mt-6"><a href="mailto:info@sticonf.com" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">info@sticonf.com</a></div>
+            </div>
+        </div>
+        <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-600">&copy; 2025 STICONF. All rights reserved.</p>
+            <p class="text-xs text-slate-700">International Conference on Science, Technology & Innovation</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"><i data-lucide="check-circle" class="w-5 h-5"></i><span id="toastMsg"></span></div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ===== PARTICLES =====
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let particles=[],mouse={x:null,y:null};
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resizeCanvas();
+window.addEventListener('resize',()=>{resizeCanvas();initParticles()});
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+window.addEventListener('mouseout',()=>{mouse.x=null;mouse.y=null});
+
+class Particle{constructor(){this.reset()}
+reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*1.5+.5;this.speedX=(Math.random()-.5)*.3;this.speedY=(Math.random()-.5)*.3;this.opacity=Math.random()*.5+.1}
+update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>canvas.width)this.speedX*=-1;if(this.y<0||this.y>canvas.height)this.speedY*=-1}
+draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`rgba(0,180,216,${this.opacity})`;ctx.fill()}}
+
+function initParticles(){const c=Math.min(Math.floor(canvas.width*canvas.height/15000),80);particles=[];for(let i=0;i<c;i++)particles.push(new Particle)}
+initParticles();
+
+function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});
+for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(0,180,216,${.06*(1-dist/150)})`;ctx.lineWidth=.5;ctx.stroke()}}
+    if(mouse.x&&mouse.y){const dx=particles[i].x-mouse.x,dy=particles[i].y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<200){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(mouse.x,mouse.y);ctx.strokeStyle=`rgba(124,58,237,${.15*(1-dist/200)})`;ctx.lineWidth=.5;ctx.stroke()}}}
+requestAnimationFrame(animateParticles)}
+animateParticles();
+
+// ===== LOADER =====
+const loaderBar=document.getElementById('loaderBar'),loaderText=document.querySelector('.loader-text span'),loaderSub=document.querySelector('.loader-sub');
+let progress=0;
+const loaderTL=gsap.timeline();
+loaderTL.to(loaderText,{y:'0%',opacity:1,duration:.8,ease:'power3.out',delay:.3}).to(loaderSub,{opacity:1,duration:.6},'-=.3');
+const progressInterval=setInterval(()=>{progress+=Math.random()*15+5;if(progress>100)progress=100;loaderBar.style.width=progress+'%';if(progress>=100){clearInterval(progressInterval);setTimeout(()=>{gsap.to('#loader',{opacity:0,duration:.6,onComplete:()=>{document.getElementById('loader').classList.add('hidden');initAnimations()}})},400)}},200);
+
+// ===== LENIS SMOOTH SCROLL =====
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smooth:true});
+function raf(time){lenis.raf(time);requestAnimationFrame(raf)}
+requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(time=>lenis.raf(time*1000));
+gsap.ticker.lagSmoothing(0);
+
+// ===== NAVBAR SCROLL =====
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);document.getElementById('scrollProgress').style.transform=`scaleX(${p})`});
+
+// ===== MOBILE MENU =====
+let menuOpen=false;
+function toggleMobile(){menuOpen=!menuOpen;document.getElementById('mobile-menu').classList.toggle('open',menuOpen);const b1=document.getElementById('bar1'),b2=document.getElementById('bar2'),b3=document.getElementById('bar3');if(menuOpen){b1.style.transform='rotate(45deg) translate(4px,4px)';b2.style.opacity='0';b3.style.transform='rotate(-45deg) translate(4px,-4px)';b3.style.width='24px'}else{b1.style.transform='';b2.style.opacity='1';b3.style.transform='';b3.style.width='16px'}document.body.style.overflow=menuOpen?'hidden':''}
+function closeMobile(){if(menuOpen)toggleMobile()}
+
+// ===== GSAP ANIMATIONS =====
+function initAnimations(){gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.reveal').forEach((el,i)=>{gsap.fromTo(el,{opacity:0,y:40},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},delay:i%3*.1})})}
+
+// ===== TOAST =====
+function showToast(m,e=false){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.toggle('error',e);t.querySelector('i').setAttribute('data-lucide',e?'alert-circle':'check-circle');lucide.createIcons();t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
+
+// ===== INIT ICONS =====
+lucide.createIcons();
+</script>
+
+<!-- ===== FLUTTERWAVE SCRIPT ===== -->
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<!-- ===== SPONSORSHIP PAYMENT SCRIPT ===== -->
+<script>
+// Get Flutterwave public key from Django settings
+const flutterwavePublicKey = '{{ FLUTTERWAVE_PUBLIC_KEY }}';
+
+// Sponsorship tiers data
+let sponsorshipTiers = {};
+let currentTierId = null;
+
+// Initialize tiers data on page load
+async function initializeSponsorshipTiers() {
+    try {
+        const response = await fetch('/api/sponsorship-tiers/');
+        if (response.ok) {
+            const tiers = await response.json();
+            tiers.forEach(tier => {
+                sponsorshipTiers[tier.tier_name] = tier;
+            });
+        }
+    } catch (error) {
+        console.error('Failed to load sponsorship tiers:', error);
+    }
+}
+
+// Open payment modal
+function openPaymentModal(tierName) {
+    const tier = sponsorshipTiers[tierName];
+    if (!tier) {
+        showToast('Sponsorship tier not found', true);
+        return;
+    }
+    
+    currentTierId = tier.id;
+    
+    // Update modal display
+    const tierDisplay = tierName.charAt(0).toUpperCase() + tierName.slice(1);
+    document.getElementById('tierDisplay').textContent = tierDisplay;
+    document.getElementById('amountDisplay').textContent = Math.round(tier.amount).toLocaleString('en-NG');
+    
+    // Reset form
+    document.getElementById('paymentForm').reset();
+    
+    // Show modal
+    document.getElementById('paymentModal').classList.remove('hidden');
+}
+
+// Close payment modal
+function closePaymentModal(event) {
+    if (event && event.target.id !== 'paymentModal') return;
+    document.getElementById('paymentModal').classList.add('hidden');
+}
+
+// Handle payment form submission
+document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = {
+        company_name: document.getElementById('companyName').value,
+        contact_name: document.getElementById('contactName').value,
+        email: document.getElementById('paymentEmail').value,
+        phone: document.getElementById('paymentPhone').value,
+        country: document.getElementById('paymentCountry').value || 'Nigeria',
+        tier_id: currentTierId
+    };
+    
+    try {
+        // Initiate payment
+        const response = await fetch('/api/initiate-sponsorship-payment/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            showToast(data.message || 'Failed to initiate payment', true);
+            return;
+        }
+        
+        // Store reference for verification
+        const paymentReference = data.reference;
+        
+        // Initialize Flutterwave payment
+        FlutterwaveCheckout({
+            public_key: flutterwavePublicKey,
+            tx_ref: paymentReference,
+            amount: sponsorshipTiers[Object.keys(sponsorshipTiers).find(k => sponsorshipTiers[k].id === currentTierId)].amount,
+            currency: 'NGN',
+            payment_options: 'card,ussd,account_transfer',
+            customer: {
+                email: formData.email,
+                name: formData.contact_name,
+                phonenumber: formData.phone
+            },
+            customizations: {
+                title: 'STICONF 2026 Sponsorship',
+                description: Object.keys(sponsorshipTiers).find(k => sponsorshipTiers[k].id === currentTierId).toUpperCase() + ' Sponsorship Package',
+                logo: '/static/images/logo.png'
+            },
+            callback: function(data) {
+                if (data.status === 'successful') {
+                    // Verify payment
+                    verifyPayment(paymentReference, data.transaction_id);
+                } else {
+                    showToast('Payment was not successful. Please try again.', true);
+                    closePaymentModal();
+                }
+            },
+            onclose: function() {
+                console.log('Payment dialog closed');
+            }
+        });
+        
+    } catch (error) {
+        console.error('Payment error:', error);
+        showToast('An error occurred. Please try again.', true);
+    }
+});
+
+// Verify payment
+async function verifyPayment(reference, transactionId) {
+    try {
+        const response = await fetch('/api/verify-sponsorship-payment/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                transaction_id: transactionId
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            showToast('✓ Sponsorship payment confirmed! Thank you for supporting STICONF 2026.');
+            closePaymentModal();
+            document.getElementById('paymentForm').reset();
+        } else {
+            showToast(data.message || 'Payment verification failed', true);
+        }
+    } catch (error) {
+        console.error('Verification error:', error);
+        showToast('Could not verify payment. ' + error.message, true);
+    }
+}
+
+// Initialize on page load
+window.addEventListener('load', initializeSponsorshipTiers);
+</script>
+</body>
+</html>

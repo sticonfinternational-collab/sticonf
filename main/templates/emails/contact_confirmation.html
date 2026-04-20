@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Thank you for contacting STICONF 2026</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #00b4d8, #7c3aed); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+        .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #00b4d8; margin: 20px 0; }
+        .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thank You!</h1>
+            <p>We've received your message</p>
+        </div>
+        <div class="content">
+            <p>Dear {{ name }},</p>
+
+            <p>Thank you for reaching out to STICONF 2026! We've successfully received your message regarding <strong>"{{ subject }}"</strong>.</p>
+
+            <div class="highlight">
+                <h3 style="margin-top: 0; color: #00b4d8;">What happens next?</h3>
+                <p>Our team will review your inquiry and get back to you within 24 hours. We'll respond to you at <strong>{{ email }}</strong>.</p>
+            </div>
+
+            <p>For urgent matters, you can also contact us directly:</p>
+            <ul>
+                <li>Email: <a href="mailto:info@sticonf.com">info@sticonf.com</a></li>
+                <li>Phone: +234 800 000 0000</li>
+            </ul>
+
+            <p>We look forward to connecting with you!</p>
+
+            <p>Best regards,<br>
+            The STICONF 2026 Team</p>
+        </div>
+
+        <div class="footer">
+            <p>STICONF 2026 - International Conference on Science, Technology & Innovation<br>
+            March 2026 · Abuja, Nigeria</p>
+        </div>
+    </div>
+</body>
+</html>
