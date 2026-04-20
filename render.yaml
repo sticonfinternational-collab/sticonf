@@ -2,11 +2,10 @@ services:
   - type: web
     name: sticonf
     env: python
+    pythonVersion: 3.11.4
     plan: free
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn sticonf.wsgi:application --worker-tmp-dir /dev/shm"
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn sticonf.wsgi:application --worker-tmp-dir /dev/shm --timeout 120"
     envVars:
       - key: DEBUG
         value: "False"
-      - key: PYTHON_VERSION
-        value: "3.11.4"
