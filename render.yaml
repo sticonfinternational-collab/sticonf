@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sticonf
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn sticonf.wsgi:application --worker-tmp-dir /dev/shm"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: PYTHON_VERSION
+        value: "3.11.4"
