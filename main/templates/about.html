@@ -218,7 +218,7 @@
             </div>
             <!-- 7 -->
             <div class="gallery-item gal-reveal" onclick="openLightbox(6)">
-                <img src="{% static "images/image6.jpg" %}g" alt="MOU Signing" loading="lazy">
+                <img src="{% static "images/image6.jpg" %}" alt="MOU Signing" loading="lazy">
                 <span class="gallery-tag" style="background:rgba(124,58,237,.2);color:#7c3aed;border:1px solid rgba(124,58,237,.3)">Partnership</span>
                 <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
                 <div class="gallery-overlay"><h4>MOU Signing Ceremony</h4><p>Formalising research–industry partnerships</p></div>
@@ -309,7 +309,7 @@
             </div>
             <!-- 20 -->
             <div class="gallery-item gal-reveal" onclick="openLightbox(19)">
-                <img src="{% static "images/image19.jpg" %}" alt="Closing Ceremony" loading="lazy">
+                <img src="{% static "images/image20.jpg" %}" alt="Closing Ceremony" loading="lazy">
                 <span class="gallery-tag" style="background:rgba(16,185,129,.2);color:#10b981;border:1px solid rgba(16,185,129,.3)">Closing</span>
                 <div class="gallery-zoom"><i data-lucide="maximize-2"></i></div>
                 <div class="gallery-overlay"><h4>Closing Ceremony</h4><p>Vote of thanks and look ahead to the next edition</p></div>
@@ -391,27 +391,27 @@ gsap.utils.toArray('.gal-reveal').forEach((el,i)=>{gsap.fromTo(el,{opacity:0,y:6
 
 // ===== GALLERY DATA =====
 const galleryData=[
-    {src:'https://picsum.photos/seed/sticonf-keynote/1200/800.jpg',title:'Opening Keynote Address',desc:'Leading voices setting the agenda for STI transformation'},
-    {src:'https://picsum.photos/seed/sticonf-panel1/1200/800.jpg',title:'Expert Panel Discussion',desc:'Diverse perspectives on research–industry linkages'},
-    {src:'https://picsum.photos/seed/sticonf-exhibit1/800/1200.jpg',title:'Innovation Exhibition Hall',desc:'Showcasing cutting-edge indigenous technologies'},
-    {src:'https://picsum.photos/seed/sticonf-network1/1200/800.jpg',title:'Networking Break',desc:'Connecting researchers, industry leaders, and policymakers'},
-    {src:'https://picsum.photos/seed/sticonf-workshop1/1200/800.jpg',title:'Hands-on Workshop',desc:'Practical sessions on technology transfer frameworks'},
-    {src:'https://picsum.photos/seed/sticonf-audience/1200/800.jpg',title:'Plenary Session — Full House',desc:'Over 500 delegates engaged in the main hall'},
-    {src:'https://picsum.photos/seed/sticonf-mou/1200/800.jpg',title:'MOU Signing Ceremony',desc:'Formalising research–industry partnerships'},
-    {src:'https://picsum.photos/seed/sticonf-poster/800/1200.jpg',title:'Poster Presentations',desc:'Graduate and postdoctoral researchers presenting findings'},
-    {src:'https://picsum.photos/seed/sticonf-pitch/1200/800.jpg',title:'Innovation Pitch Session',desc:'Startups pitching to investors and industry leaders'},
-    {src:'https://picsum.photos/seed/sticonf-tech1/1200/800.jpg',title:'Emerging Tech Showcase',desc:'AI, IoT, and advanced manufacturing demonstrations'},
-    {src:'https://picsum.photos/seed/sticonf-group/1200/800.jpg',title:'Delegate Group Photo',desc:'The STICONF community — united for innovation'},
-    {src:'https://picsum.photos/seed/sticonf-sponsor1/1200/800.jpg',title:'Sponsor Exhibition Booth',desc:'Industry partners showcasing solutions'},
-    {src:'https://picsum.photos/seed/sticonf-breakout/1200/800.jpg',title:'Breakout Working Session',desc:'Collaborative policy drafting in action'},
-    {src:'https://picsum.photos/seed/sticonf-stage/800/1200.jpg',title:'Main Stage Setup',desc:'World-class conference infrastructure'},
-    {src:'https://picsum.photos/seed/sticonf-award/1200/800.jpg',title:'Innovation Awards',desc:'Celebrating outstanding contributions to STI'},
-    {src:'https://picsum.photos/seed/sticonf-discuss/1200/800.jpg',title:'Investor Roundtable',desc:'Financing innovation — VC and PPP discussions'},
-    {src:'https://picsum.photos/seed/sticonf-reception/1200/800.jpg',title:'Welcome Reception',desc:'Evening networking in an elegant setting'},
-    {src:'https://picsum.photos/seed/sticonf-female/1200/800.jpg',title:'Women in STI Session',desc:'Promoting gender equity in science and innovation'},
-    {src:'https://picsum.photos/seed/sticonf-lab/1200/800.jpg',title:'Research Lab Tour',desc:'Delegates visiting state-of-the-art facilities'},
-    {src:'https://picsum.photos/seed/sticonf-closing/1200/800.jpg',title:'Closing Ceremony',desc:'Vote of thanks and look ahead to the next edition'},
-    {src:'https://picsum.photos/seed/sticonf-vibe/800/1200.jpg',title:'The STICONF Experience',desc:'Energy, innovation, and collaboration at its finest'}
+    {src:'/static/images/image1.jpg',title:'Opening Keynote Address',desc:'Leading voices setting the agenda for STI transformation'},
+    {src:'/static/images/image2.jpg',title:'Expert Panel Discussion',desc:'Diverse perspectives on research–industry linkages'},
+    {src:'/static/images/image3.jpg',title:'Innovation Exhibition Hall',desc:'Showcasing cutting-edge indigenous technologies'},
+    {src:'/static/images/image4.jpg',title:'Networking Break',desc:'Connecting researchers, industry leaders, and policymakers'},
+    {src:'/static/images/image21.jpg',title:'Hands-on Workshop',desc:'Practical sessions on technology transfer frameworks'},
+    {src:'/static/images/image5.jpg',title:'Plenary Session — Full House',desc:'Over 500 delegates engaged in the main hall'},
+    {src:'/static/images/image6.jpg',title:'MOU Signing Ceremony',desc:'Formalising research–industry partnerships'},
+    {src:'/static/images/image8.jpg',title:'Poster Presentations',desc:'Graduate and postdoctoral researchers presenting findings'},
+    {src:'/static/images/image9.jpg',title:'Innovation Pitch Session',desc:'Startups pitching to investors and industry leaders'},
+    {src:'/static/images/image10.jpg',title:'Emerging Tech Showcase',desc:'AI, IoT, and advanced manufacturing demonstrations'},
+    {src:'/static/images/image11.jpg',title:'Delegate Group Photo',desc:'The STICONF community — united for innovation'},
+    {src:'/static/images/image12.jpg',title:'Sponsor Exhibition Booth',desc:'Industry partners showcasing solutions'},
+    {src:'/static/images/image13.jpg',title:'Breakout Working Session',desc:'Collaborative policy drafting in action'},
+    {src:'/static/images/image14.jpg',title:'Main Stage Setup',desc:'World-class conference infrastructure'},
+    {src:'/static/images/image15.jpg',title:'Innovation Awards',desc:'Celebrating outstanding contributions to STI'},
+    {src:'/static/images/image16.jpg',title:'Investor Roundtable',desc:'Financing innovation — VC and PPP discussions'},
+    {src:'/static/images/image17.jpg',title:'Welcome Reception',desc:'Evening networking in an elegant setting'},
+    {src:'/static/images/image18.jpg',title:'Women in STI Session',desc:'Promoting gender equity in science and innovation'},
+    {src:'/static/images/image19.jpg',title:'Research Lab Tour',desc:'Delegates visiting state-of-the-art facilities'},
+    {src:'/static/images/image20.jpg',title:'Closing Ceremony',desc:'Vote of thanks and look ahead to the next edition'},
+    {src:'/static/images/image22.jpg',title:'The STICONF Experience',desc:'Energy, innovation, and collaboration at its finest'}
 ];
 let currentLightbox=0;
 
