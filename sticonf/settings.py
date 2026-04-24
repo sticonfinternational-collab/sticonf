@@ -159,16 +159,25 @@ BREVO_LIST_ID = os.getenv('BREVO_LIST_ID')
 FLUTTERWAVE_PUBLIC_KEY = os.getenv('FLUTTERWAVE_PUBLIC_KEY', '')
 FLUTTERWAVE_SECRET_KEY = os.getenv('FLUTTERWAVE_SECRET_KEY', '')
 
-# Email configuration - TEMPORARILY USING CONSOLE BACKEND FOR TESTING
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Change to SMTP after getting correct credentials
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# Email configuration
+# Use custom backend that handles SSL certificate verification issues
+# Set EMAIL_USE_INSECURE_BACKEND=True in .env for development if you have SSL issues
+USE_INSECURE_EMAIL_BACKEND = os.getenv('EMAIL_USE_INSECURE_BACKEND', 'False').lower() == 'true'
+
+if USE_INSECURE_EMAIL_BACKEND:
+    # Development: Disables SSL certificate verification
+    # Only use this if you have SSL certificate issues
+    EMAIL_BACKEND = 'main.email_backends.InsecureSMTPBackend'
+else:
+    # Production: Proper SSL certificate verification
+    EMAIL_BACKEND = 'main.email_backends.SecureSMTPBackend'
+
 EMAIL_HOST = 'smtp-relay.brevo.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('BREVO_SMTP_USER')
 EMAIL_HOST_PASSWORD = os.getenv('BREVO_SMTP_PASSWORD')
 DEFAULT_FROM_EMAIL = f'STICONF 2026 <{os.getenv("BREVO_SMTP_USER", "noreply@sticonf.com")}>'
-ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', 'sticonfinternational@gmail.com')
 ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', 'sticonfinternational@gmail.com')
 
 # Default primary key field type

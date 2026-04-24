@@ -77,28 +77,38 @@ def handle_contact(request):
             plain_message = strip_tags(html_message)
 
             # Send email to admin
-            send_mail(
-                subject=email_subject,
-                message=plain_message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.ADMIN_EMAIL],
-                html_message=html_message,
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    subject=email_subject,
+                    message=plain_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.ADMIN_EMAIL],
+                    html_message=html_message,
+                    fail_silently=False,
+                )
+            except Exception as e:
+                # Log the error but don't crash the form
+                print(f"Admin email sending error: {e}")
+                # Optionally log to file or monitoring service here
 
             # Send confirmation email to user
             confirmation_subject = "Thank you for contacting STICONF 2026"
             confirmation_html = render_to_string('emails/contact_confirmation.html', context)
             confirmation_plain = strip_tags(confirmation_html)
 
-            send_mail(
-                subject=confirmation_subject,
-                message=confirmation_plain,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[email],
-                html_message=confirmation_html,
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    subject=confirmation_subject,
+                    message=confirmation_plain,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    html_message=confirmation_html,
+                    fail_silently=False,
+                )
+            except Exception as e:
+                # Log the error but don't crash the form
+                print(f"Confirmation email sending error: {e}")
+                # Optionally log to file or monitoring service here
 
             messages.success(request, "Thank you for your message! We've received your inquiry and will respond within 24 hours.")
             return render(request, 'contact.html')
