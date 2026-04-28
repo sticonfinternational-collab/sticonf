@@ -268,15 +268,39 @@
             <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-cyan mb-4">At a Glance</span>
             <h2 class="reveal font-heading text-3xl md:text-5xl font-bold text-white">Event <span class="gradient-text">Details</span></h2>
         </div>
-        <h1 class="reveal font-heading font-bold leading-[0.95] tracking-tight mb-8" id="heroTitle" style="font-size:clamp(2.5rem,7vw,6rem)">
-            <span class="block text-white">STICONF</span>
-            <span class="block gradient-text" style="font-size:clamp(1.2rem,3.5vw,2.8rem);font-weight:400;margin-top:8px">2026</span>
-        </h1>
-        <p class="reveal max-w-3xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-4" id="heroTheme" style="font-weight:300">Bridging the Technology Divide</p>
-        <p class="reveal max-w-2xl mx-auto text-sm md:text-base text-slate-500 leading-relaxed mb-12" id="heroSub">Strengthening Research Institutions–Industry Technology Linkages for accelerated innovation commercialisation and socio-economic development.</p>
-        <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4" id="heroCTA">
-            <a href="{% url "register" %}" class="btn-primary"><span>Register Now</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-            <a href="{% url "about" %}" class="btn-outline"><span>Learn More</span></a>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-cyan/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-cyan/20 transition-colors">
+                    <i data-lucide="calendar-days" class="w-7 h-7 text-accent-cyan"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Date</h3>
+                <p class="text-slate-400 text-sm">June 16–18, 2026</p>
+                <p class="text-slate-600 text-xs mt-1">Monday – Wednesday</p>
+            </div>
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-purple/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-purple/20 transition-colors">
+                    <i data-lucide="map-pin" class="w-7 h-7 text-accent-purple"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Venue</h3>
+                <p class="text-slate-400 text-sm">Alero Azazi Center</p>
+                <p class="text-slate-600 text-xs mt-1">NAOWA Event Arena, Asokoro, Abuja</p>
+            </div>
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-amber/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-amber/20 transition-colors">
+                    <i data-lucide="users" class="w-7 h-7 text-accent-amber"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Participants</h3>
+                <p class="text-slate-400 text-sm">500+ Expected</p>
+                <p class="text-slate-600 text-xs mt-1">Across Africa & Beyond</p>
+            </div>
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-emerald/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-emerald/20 transition-colors">
+                    <i data-lucide="mic-2" class="w-7 h-7 text-accent-emerald"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Speakers</h3>
+                <p class="text-slate-400 text-sm">50+ Speakers</p>
+                <p class="text-slate-600 text-xs mt-1">8 Technical Sub-themes</p>
+            </div>
         </div>
     </div>
 </section>
