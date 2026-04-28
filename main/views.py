@@ -77,28 +77,38 @@ def handle_contact(request):
             plain_message = strip_tags(html_message)
 
             # Send email to admin
-            send_mail(
-                subject=email_subject,
-                message=plain_message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.ADMIN_EMAIL],
-                html_message=html_message,
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    subject=email_subject,
+                    message=plain_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.ADMIN_EMAIL],
+                    html_message=html_message,
+                    fail_silently=False,
+                )
+            except Exception as e:
+                # Log the error but don't crash the form
+                print(f"Admin email sending error: {e}")
+                # Optionally log to file or monitoring service here
 
             # Send confirmation email to user
             confirmation_subject = "Thank you for contacting STICONF 2026"
             confirmation_html = render_to_string('emails/contact_confirmation.html', context)
             confirmation_plain = strip_tags(confirmation_html)
 
-            send_mail(
-                subject=confirmation_subject,
-                message=confirmation_plain,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[email],
-                html_message=confirmation_html,
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    subject=confirmation_subject,
+                    message=confirmation_plain,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    html_message=confirmation_html,
+                    fail_silently=False,
+                )
+            except Exception as e:
+                # Log the error but don't crash the form
+                print(f"Confirmation email sending error: {e}")
+                # Optionally log to file or monitoring service here
 
             messages.success(request, "Thank you for your message! We've received your inquiry and will respond within 24 hours.")
             return render(request, 'contact.html')
@@ -391,58 +401,49 @@ def verify_sponsorship_payment(request):
 
 
 def send_sponsorship_confirmation(sponsorship):
-    """Send sponsorship confirmation email"""
+    """Send sponsorship confirmation email to sponsor and admin notification"""
     context = {
         'company_name': sponsorship.company_name,
         'contact_name': sponsorship.contact_name,
         'tier': sponsorship.tier.get_tier_name_display(),
         'amount': f"₦{sponsorship.amount:,.0f}",
         'reference': sponsorship.reference,
-        'email': sponsorship.email
+        'email': sponsorship.email,
+        'phone': sponsorship.phone,
+        'country': sponsorship.country,
+        'transaction_id': sponsorship.transaction_id or 'N/A',
+        'paid_at': sponsorship.paid_at.strftime('%d %B %Y, %H:%M') if sponsorship.paid_at else 'N/A',
+        'sponsorship_id': sponsorship.id
     }
     
-    # You can create a template like emails/sponsorship_confirmation.html
-    html_message = f"""
-    <html>
-        <body>
-            <h2>Thank you for sponsoring STICONF 2026!</h2>
-            <p>Dear {context['contact_name']},</p>
-            <p>Your sponsorship has been confirmed. Here are the details:</p>
-            <table>
-                <tr><td><strong>Company:</strong></td><td>{context['company_name']}</td></tr>
-                <tr><td><strong>Tier:</strong></td><td>{context['tier']}</td></tr>
-                <tr><td><strong>Amount:</strong></td><td>{context['amount']}</td></tr>
-                <tr><td><strong>Reference:</strong></td><td>{context['reference']}</td></tr>
-            </table>
-            <p>Our team will contact you shortly to discuss the next steps and maximize your sponsorship impact.</p>
-            <p>Best regards,<br/>STICONF 2026 Team</p>
-        </body>
-    </html>
-    """
+    try:
+        # Send confirmation email to sponsor
+        sponsor_html = render_to_string('emails/sponsorship_confirmation.html', context)
+        sponsor_plain = strip_tags(sponsor_html)
+        
+        send_mail(
+            subject=f"STICONF 2026 Sponsorship Confirmed - {context['amount']}",
+            message=sponsor_plain,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[sponsorship.email],
+            html_message=sponsor_html,
+            fail_silently=False,
+        )
+    except Exception as e:
+        print(f"Error sending sponsor confirmation email: {e}")
     
-    send_mail(
-        subject=f"STICONF 2026 Sponsorship Confirmed - {context['amount']}",
-        message=strip_tags(html_message),
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[sponsorship.email],
-        html_message=html_message,
-        fail_silently=True,
-    )
-    
-    # Also notify admin
-    send_mail(
-        subject=f"New STICONF Sponsor: {sponsorship.company_name}",
-        message=f"""
-New sponsorship received:
-Company: {sponsorship.company_name}
-Contact: {sponsorship.contact_name}
-Email: {sponsorship.email}
-Phone: {sponsorship.phone}
-Tier: {context['tier']}
-Amount: {context['amount']}
-Reference: {context['reference']}
-        """,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[settings.ADMIN_EMAIL],
-        fail_silently=True,
-    )
+    try:
+        # Send admin notification email
+        admin_html = render_to_string('emails/sponsorship_admin_notification.html', context)
+        admin_plain = strip_tags(admin_html)
+        
+        send_mail(
+            subject=f"New STICONF 2026 Sponsorship: {sponsorship.company_name} - {context['amount']}",
+            message=admin_plain,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.ADMIN_EMAIL],
+            html_message=admin_html,
+            fail_silently=False,
+        )
+    except Exception as e:
+        print(f"Error sending admin notification email: {e}")

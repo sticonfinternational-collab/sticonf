@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STICONF 2026 | Schedule</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/logo.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/logo.png" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/logo.png" %}">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -36,6 +39,7 @@
         .section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
         .reveal{opacity:0;transform:translateY(40px)}
         .day-tab{padding:10px 24px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:transparent;color:#64748b;cursor:pointer;transition:all .3s}.day-tab:hover{color:#e2e8f0;border-color:rgba(255,255,255,.15)}.day-tab.active{background:linear-gradient(135deg,rgba(0,180,216,.15),rgba(124,58,237,.15));border-color:rgba(0,180,216,.3);color:#fff}
+        .time-range{font-size:10px;color:#64748b;margin-top:2px;font-family:'JetBrains Mono',monospace}
         ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#050816}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
     </style>
 </head>
@@ -52,7 +56,8 @@
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
         <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-purple mb-6">Conference Programme</span>
         <h1 class="reveal font-heading font-bold leading-[1.05] tracking-tight mb-6" style="font-size:clamp(2.2rem,5.5vw,4.5rem)">Event <span class="gradient-text">Schedule</span></h1>
-        <p class="reveal text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">Three days of keynotes, technical sessions, workshops, and networking designed to drive actionable outcomes.</p>
+        <p class="reveal text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto mb-4">Three days of keynotes, technical sessions, panels, and networking designed to bridge Africa's tech divide and drive global competitiveness.</p>
+        <p class="reveal text-sm text-slate-500 font-mono tracking-wide"><i data-lucide="calendar" class="w-4 h-4 inline mr-1.5 -mt-0.5"></i>June 16–18, 2026 &nbsp;&middot;&nbsp; <i data-lucide="map-pin" class="w-4 h-4 inline mr-1.5 -mt-0.5"></i>Alero Azazi Center (NAOWA Event Arena), Asokoro, Abuja</p>
     </div>
 </section>
 
@@ -62,43 +67,672 @@
 <section class="relative py-16 md:py-24 overflow-hidden">
     <div class="max-w-5xl mx-auto px-6">
         <div class="reveal flex flex-wrap justify-center gap-3 mb-12">
-            <button class="day-tab active" onclick="switchDay(1,this)">Day 1</button>
-            <button class="day-tab" onclick="switchDay(2,this)">Day 2</button>
-            <button class="day-tab" onclick="switchDay(3,this)">Day 3</button>
+            <button class="day-tab active" onclick="switchDay(1,this)">Day 1 &middot; Jun 16</button>
+            <button class="day-tab" onclick="switchDay(2,this)">Day 2 &middot; Jun 17</button>
+            <button class="day-tab" onclick="switchDay(3,this)">Day 3 &middot; Jun 18</button>
         </div>
 
-        <!-- Day 1 -->
+        <!-- ===================== DAY 1 ===================== -->
         <div class="day-content" id="day1">
             <div class="space-y-5">
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">08:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Registration</span></div><h3 class="font-heading font-semibold text-white">Registration & Check-in</h3><p class="text-slate-500 text-sm mt-1">Delegate registration, welcome kits, and networking breakfast</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Lobby</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">10:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Keynote</span></div><h3 class="font-heading font-semibold text-white">Opening Ceremony & Keynote Address</h3><p class="text-slate-500 text-sm mt-1">STI landscape in Nigeria — challenges, opportunities, and the path forward</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">12:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Panel</span></div><h3 class="font-heading font-semibold text-white">Panel: The Research–Industry Divide — Diagnosis & Solutions</h3><p class="text-slate-500 text-sm mt-1">Expert panel exploring root causes and practical solutions for the technology divide</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">14:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Lunch & Network</span></div><h3 class="font-heading font-semibold text-white">Lunch & Exhibition Tour</h3><p class="text-slate-500 text-sm mt-1">Explore innovation showcases, poster presentations, and sponsor booths</p></div><div class="text-xs text-slate-600 flex-shrink-0">Exhibition Area</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">15:30</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Session</span></div><h3 class="font-heading font-semibold text-white">Research Commercialisation & Technology Transfer Models</h3><p class="text-slate-500 text-sm mt-1">Case studies from successful technology transfer offices and frameworks</p></div><div class="text-xs text-slate-600 flex-shrink-0">Room A</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">17:30</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-rose-400/70 bg-rose-400/10 px-2 py-0.5 rounded">Social</span></div><h3 class="font-heading font-semibold text-white">Welcome Reception & Networking Evening</h3><p class="text-slate-500 text-sm mt-1">Informal networking with delegates, speakers, and sponsors</p></div><div class="text-xs text-slate-600 flex-shrink-0">Terrace</div></div>
+
+                <!-- 1. Arrival & Registration -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">08:00</span>
+                        <div class="time-range">– 09:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Registration</span></div>
+                        <h3 class="font-heading font-semibold text-white">Arrival and Registration of Participants</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Lobby</div>
+                </div>
+
+                <!-- 2. National Anthem & Prayer -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:00</span>
+                        <div class="time-range">– 09:15</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Ceremony</span></div>
+                        <h3 class="font-heading font-semibold text-white">National Anthem & National Prayer</h3>
+                        <p class="text-slate-500 text-sm mt-1">First stanza of the National Anthem and 3rd stanza of the National Anthem</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 3. Welcome Address -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:15</span>
+                        <div class="time-range">– 09:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Opening</span></div>
+                        <h3 class="font-heading font-semibold text-white">Welcome Address</h3>
+                        <p class="text-slate-500 text-sm mt-1">Delivered by Welcome to Nigeria Limited</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 4. Conference Overview -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:30</span>
+                        <div class="time-range">– 09:40</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Briefing</span></div>
+                        <h3 class="font-heading font-semibold text-white">Overview of the Conference</h3>
+                        <p class="text-slate-500 text-sm mt-1">Presented by Alpha Helix Foundation</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 5. Opening Remarks & Declaration -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:40</span>
+                        <div class="time-range">– 09:45</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Opening</span></div>
+                        <h3 class="font-heading font-semibold text-white">Opening Remarks & Conference Declaration</h3>
+                        <p class="text-slate-500 text-sm mt-1">By the Chief Host — Hon. Minister, Federal Ministry of Innovation, Science & Technology (FMIST)</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 6. Goodwill Messages -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:45</span>
+                        <div class="time-range">– 10:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Remarks</span></div>
+                        <h3 class="font-heading font-semibold text-white">Goodwill Messages</h3>
+                        <p class="text-slate-500 text-sm mt-1">From local and international partners and stakeholders</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 7. Keynote Address -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(124,58,237,.2);background:rgba(124,58,237,.04)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-purple text-sm font-medium">10:00</span>
+                        <div class="time-range">– 11:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-purple/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Keynote</span></div>
+                        <h3 class="font-heading font-semibold text-white">Africa in the Global Innovation Race: Opportunities and Challenges</h3>
+                        <p class="text-slate-500 text-sm mt-1">Keynote address delivered by the President of ECOWAS</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 8. Keynote Q&A -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">11:00</span>
+                        <div class="time-range">– 11:15</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Keynote</span></div>
+                        <h3 class="font-heading font-semibold text-white">Keynote Discussion & Q&A</h3>
+                        <p class="text-slate-500 text-sm mt-1">Interactive session following the keynote address</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 9. Tea Break -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(16,185,129,.12);background:rgba(16,185,129,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-emerald-500 text-sm font-medium">11:15</span>
+                        <div class="time-range">– 12:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-emerald-500/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Tea Break</span></div>
+                        <h3 class="font-heading font-semibold text-white">Tea Break & Networking</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Lounge</div>
+                </div>
+
+                <!-- 10. Plenary Session -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(59,130,246,.2);background:rgba(59,130,246,.04)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-blue text-sm font-medium">13:00</span>
+                        <div class="time-range">– 13:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-blue/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-blue/70 bg-accent-blue/10 px-2 py-0.5 rounded">Plenary</span></div>
+                        <h3 class="font-heading font-semibold text-white">Policy, Ecosystem and Global Perspectives</h3>
+                        <p class="text-slate-500 text-sm mt-1"><strong class="text-slate-400">Topic:</strong> Policy Frameworks for Closing Africa's Technology Gap</p>
+                        <p class="text-slate-600 text-xs mt-1.5">Focus: STI Governance &middot; Regulatory Frameworks &middot; Digital Transformation &middot; Technology Transfer Policies</p>
+                        <p class="text-slate-600 text-xs mt-1.5 italic">Includes vote of thanks for the first Technical Session</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 11. Technical Session 1 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">13:30</span>
+                        <div class="time-range">– 14:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Financing Science, Technology and Innovation</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: Venture Capital and Private Sector Funding &middot; Public-Private Partnerships for Research &middot; Innovative Financing Models &middot; Development Finance for Deep Tech</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 12. Technical Session 2 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">14:00</span>
+                        <div class="time-range">– 14:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Research Commercialization and Technology Transfer</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: University–Industry Partnerships &middot; Intellectual Property Ecosystem &middot; Innovation Hubs and Incubators &middot; Scaling African Research Outputs</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 13. Lunch -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(16,185,129,.12);background:rgba(16,185,129,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-emerald-500 text-sm font-medium">14:30</span>
+                        <div class="time-range">– 15:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-emerald-500/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Lunch</span></div>
+                        <h3 class="font-heading font-semibold text-white">Lunch Break</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Dining Area</div>
+                </div>
+
+                <!-- 14. Networking Reception -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">15:30</span>
+                        <div class="time-range">– 16:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-rose-400/70 bg-rose-400/10 px-2 py-0.5 rounded">Social</span></div>
+                        <h3 class="font-heading font-semibold text-white">Networking Reception</h3>
+                        <p class="text-slate-500 text-sm mt-1">Informal networking with delegates, speakers, and partners</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Terrace</div>
+                </div>
+
+                <!-- 15. Startup Innovation Showcase -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">16:00</span>
+                        <div class="time-range">– 16:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Showcase</span></div>
+                        <h3 class="font-heading font-semibold text-white">Startup Innovation Showcase</h3>
+                        <p class="text-slate-500 text-sm mt-1">Live demonstrations from emerging startups and innovators</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Exhibition Hall</div>
+                </div>
+
+                <!-- 16. National Pledge / Close -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">16:30</span>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-slate-500/70 bg-slate-500/10 px-2 py-0.5 rounded">Close</span></div>
+                        <h3 class="font-heading font-semibold text-white">Closing — Recitation of the National Pledge</h3>
+                        <p class="text-slate-500 text-sm mt-1">End of Day 1 proceedings</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Day 2 -->
+        <!-- ===================== DAY 2 ===================== -->
         <div class="day-content hidden" id="day2">
             <div class="space-y-5">
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">09:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Keynote</span></div><h3 class="font-heading font-semibold text-white">Keynote: Industry-Led Innovation Ecosystems</h3><p class="text-slate-500 text-sm mt-1">How leading firms drive demand-driven research and co-creation</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">10:30</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Parallel</span></div><h3 class="font-heading font-semibold text-white">Track A: IP, Standards & Regulatory Pathways</h3><p class="text-slate-500 text-sm mt-1">Navigating intellectual property and regulatory frameworks for tech transfer</p></div><div class="text-xs text-slate-600 flex-shrink-0">Room A</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">10:30</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Parallel</span></div><h3 class="font-heading font-semibold text-white">Track B: Financing Innovation — VC, Grants & PPPs</h3><p class="text-slate-500 text-sm mt-1">Funding mechanisms and investment models for research commercialisation</p></div><div class="text-xs text-slate-600 flex-shrink-0">Room B</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">13:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Workshop</span></div><h3 class="font-heading font-semibold text-white">Workshop: Building Effective Industry–Academia Partnerships</h3><p class="text-slate-500 text-sm mt-1">Hands-on session on structuring partnership agreements and MOUs</p></div><div class="text-xs text-slate-600 flex-shrink-0">Workshop Room</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">15:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Session</span></div><h3 class="font-heading font-semibold text-white">Digital Transformation & Emerging Technologies</h3><p class="text-slate-500 text-sm mt-1">AI, IoT, blockchain, and advanced manufacturing for Nigerian industries</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">17:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Showcase</span></div><h3 class="font-heading font-semibold text-white">Innovation Showcase & Pitch Session</h3><p class="text-slate-500 text-sm mt-1">Startups and researchers pitch scalable innovations to investors and industry leaders</p></div><div class="text-xs text-slate-600 flex-shrink-0">Exhibition Hall</div></div>
+
+                <!-- 1. Arrival & Registration -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">08:00</span>
+                        <div class="time-range">– 09:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Registration</span></div>
+                        <h3 class="font-heading font-semibold text-white">Arrival and Registration of Participants</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Lobby</div>
+                </div>
+
+                <!-- 2. National Anthem & Prayer -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:00</span>
+                        <div class="time-range">– 09:15</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Ceremony</span></div>
+                        <h3 class="font-heading font-semibold text-white">National Anthem & National Prayer</h3>
+                        <p class="text-slate-500 text-sm mt-1">First stanza of the National Anthem and 3rd stanza of the National Anthem</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 3. Recap of Day One -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:15</span>
+                        <div class="time-range">– 09:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Briefing</span></div>
+                        <h3 class="font-heading font-semibold text-white">Recap of Day One</h3>
+                        <p class="text-slate-500 text-sm mt-1">Summary of key takeaways and outcomes from the opening day</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 4. Keynote Address -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(124,58,237,.2);background:rgba(124,58,237,.04)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-purple text-sm font-medium">09:30</span>
+                        <div class="time-range">– 10:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-purple/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Keynote</span></div>
+                        <h3 class="font-heading font-semibold text-white">Leveraging Emerging Technologies for Africa's Industrial Transformation</h3>
+                        <p class="text-slate-500 text-sm mt-1">Plenary session — Sectoral Technologies and Innovation</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 5. Tea Break -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(16,185,129,.12);background:rgba(16,185,129,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-emerald-500 text-sm font-medium">10:00</span>
+                        <div class="time-range">– 10:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-emerald-500/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Tea Break</span></div>
+                        <h3 class="font-heading font-semibold text-white">Tea Break</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Lounge</div>
+                </div>
+
+                <!-- 6. Technical Session 3 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">10:30</span>
+                        <div class="time-range">– 11:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Digital Economy and Artificial Intelligence</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: AI for Development &middot; Data Governance &middot; Cybersecurity &middot; Digital Infrastructure</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 7. Technical Session 4 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">11:00</span>
+                        <div class="time-range">– 11:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Agricultural Innovation and Food Systems</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: Climate-Smart Agriculture &middot; Biotechnology &middot; Precision Agriculture &middot; Post-Harvest Technologies</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 8. Technical Session 5 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">11:30</span>
+                        <div class="time-range">– 12:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Health Innovation and Biotechnology</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: Genomics and Bioinformatics &middot; Vaccine Development &middot; Pharmaceutical Innovation &middot; Diagnostic Technologies</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 9. Panel Discussion -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(245,158,11,.15);background:rgba(245,158,11,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-amber text-sm font-medium">12:00</span>
+                        <div class="time-range">– 13:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-amber/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Panel</span></div>
+                        <h3 class="font-heading font-semibold text-white">Building Africa's Innovation Talent Pipeline</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Focus: STEM Education &middot; Research Capacity Building &middot; Women in Science &middot; Youth Innovation Ecosystems</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 10. Lunch -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(16,185,129,.12);background:rgba(16,185,129,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-emerald-500 text-sm font-medium">13:00</span>
+                        <div class="time-range">– 14:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-emerald-500/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Lunch</span></div>
+                        <h3 class="font-heading font-semibold text-white">Lunch Break</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Dining Area</div>
+                </div>
+
+                <!-- 11. Vote of Thanks -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">14:00</span>
+                        <div class="time-range">– 14:35</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Remarks</span></div>
+                        <h3 class="font-heading font-semibold text-white">Vote of Thanks</h3>
+                        <p class="text-slate-500 text-sm mt-1">Delivered by TETFUND</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 12. National Pledge / Close -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">14:35</span>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-slate-500/70 bg-slate-500/10 px-2 py-0.5 rounded">Close</span></div>
+                        <h3 class="font-heading font-semibold text-white">National Pledge / Closing</h3>
+                        <p class="text-slate-500 text-sm mt-1">End of Day 2 proceedings</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Day 3 -->
+        <!-- ===================== DAY 3 ===================== -->
         <div class="day-content hidden" id="day3">
             <div class="space-y-5">
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">09:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Panel</span></div><h3 class="font-heading font-semibold text-white">Panel: Technology Linkages for Agriculture, Health & Energy</h3><p class="text-slate-500 text-sm mt-1">Sector-specific discussions on bridging research and market needs</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">11:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Breakout</span></div><h3 class="font-heading font-semibold text-white">Breakout Sessions: Policy Recommendations Workshop</h3><p class="text-slate-500 text-sm mt-1">Collaborative sessions to draft policy recommendations and institutional reforms</p></div><div class="text-xs text-slate-600 flex-shrink-0">Rooms A, B, C</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">13:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Lunch & Network</span></div><h3 class="font-heading font-semibold text-white">Networking Lunch & MOU Signing Ceremony</h3><p class="text-slate-500 text-sm mt-1">Formal partnership agreements signed during the conference</p></div><div class="text-xs text-slate-600 flex-shrink-0">Exhibition Area</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">15:00</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Plenary</span></div><h3 class="font-heading font-semibold text-white">Plenary: Conference Resolutions & Implementation Roadmap</h3><p class="text-slate-500 text-sm mt-1">Presentation of consensus outcomes, action plans, and stakeholder working groups</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div></div>
-                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4"><div class="flex-shrink-0 w-20 text-center"><span class="font-mono text-accent-cyan text-sm font-medium">16:30</span></div><div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div><div class="flex-1"><div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Closing</span></div><h3 class="font-heading font-semibold text-white">Closing Ceremony & Awards</h3><p class="text-slate-500 text-sm mt-1">Best innovation awards, closing remarks, and vote of thanks</p></div><div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div></div>
+
+                <!-- 1. Arrival & Registration -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">08:00</span>
+                        <div class="time-range">– 09:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Registration</span></div>
+                        <h3 class="font-heading font-semibold text-white">Arrival and Registration of Participants</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Lobby</div>
+                </div>
+
+                <!-- 2. National Anthem & Prayer -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:00</span>
+                        <div class="time-range">– 09:15</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Ceremony</span></div>
+                        <h3 class="font-heading font-semibold text-white">National Anthem & National Prayer</h3>
+                        <p class="text-slate-500 text-sm mt-1">First stanza of the National Anthem and 3rd stanza of the National Anthem</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 3. Recap of Day Two -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">09:15</span>
+                        <div class="time-range">– 09:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Briefing</span></div>
+                        <h3 class="font-heading font-semibold text-white">Recap of Day Two</h3>
+                        <p class="text-slate-500 text-sm mt-1">Summary of key takeaways and outcomes from Day 2</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 4. Keynote Address -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(124,58,237,.2);background:rgba(124,58,237,.04)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-purple text-sm font-medium">09:30</span>
+                        <div class="time-range">– 10:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-purple/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Keynote</span></div>
+                        <h3 class="font-heading font-semibold text-white">From Research to Market — Scaling African Innovation Globally</h3>
+                        <p class="text-slate-500 text-sm mt-1">Plenary session — Industry, Entrepreneurship and Future Outlook</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 5. Technical Session 6 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">10:00</span>
+                        <div class="time-range">– 10:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Green Technology and Climate Innovation</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: Renewable Energy Technologies &middot; Climate Adaptation Solutions &middot; Circular Economy &middot; Carbon Markets</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 6. Tea Break -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(16,185,129,.12);background:rgba(16,185,129,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-emerald-500 text-sm font-medium">10:30</span>
+                        <div class="time-range">– 11:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-emerald-500/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Tea Break</span></div>
+                        <h3 class="font-heading font-semibold text-white">Tea Break</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Lounge</div>
+                </div>
+
+                <!-- 7. Technical Session 7 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">11:00</span>
+                        <div class="time-range">– 11:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Startups and Innovation Ecosystems</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: Startup Acceleration &middot; Technology Hubs &middot; Angel Investment Markets &middot; Scale-up Strategies</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 8. Technical Session 8 -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">11:30</span>
+                        <div class="time-range">– 12:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded">Technical</span></div>
+                        <h3 class="font-heading font-semibold text-white">Innovation Policy and Global Partnerships</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Topics: Science Diplomacy &middot; Africa's STI Success Stories &middot; National and Regional S&T Policies for Competitiveness &middot; Policy and Regulation for Tech Growth in Africa &middot; International Research Collaborations</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 9. Innovation Pitch Session -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(245,158,11,.15);background:rgba(245,158,11,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-amber text-sm font-medium">12:00</span>
+                        <div class="time-range">– 13:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-amber/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Special</span></div>
+                        <h3 class="font-heading font-semibold text-white">Innovation Pitch Session</h3>
+                        <p class="text-slate-600 text-xs mt-1.5">Startups present to investors &middot; Research commercialization pitches</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 10. Country Experiences -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(59,130,246,.2);background:rgba(59,130,246,.04)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-blue text-sm font-medium">13:00</span>
+                        <div class="time-range">– 14:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-blue/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-blue/70 bg-accent-blue/10 px-2 py-0.5 rounded">Special</span></div>
+                        <h3 class="font-heading font-semibold text-white">Country Experiences in STI Policies and Governance</h3>
+                        <p class="text-slate-500 text-sm mt-1">Presentations by Hon. Ministers of STI — 10 minutes each</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="text-[10px] font-mono bg-accent-blue/10 text-accent-blue/80 px-2 py-0.5 rounded">Nigeria</span>
+                            <span class="text-[10px] font-mono bg-accent-blue/10 text-accent-blue/80 px-2 py-0.5 rounded">South Africa</span>
+                            <span class="text-[10px] font-mono bg-accent-blue/10 text-accent-blue/80 px-2 py-0.5 rounded">Kenya</span>
+                            <span class="text-[10px] font-mono bg-accent-blue/10 text-accent-blue/80 px-2 py-0.5 rounded">Ghana</span>
+                            <span class="text-[10px] font-mono bg-accent-blue/10 text-accent-blue/80 px-2 py-0.5 rounded">Egypt</span>
+                            <span class="text-[10px] font-mono bg-accent-blue/10 text-accent-blue/80 px-2 py-0.5 rounded">Cameroon</span>
+                        </div>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 11. Closing Panel -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(245,158,11,.15);background:rgba(245,158,11,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-amber text-sm font-medium">14:00</span>
+                        <div class="time-range">– 14:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-amber/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-amber/70 bg-accent-amber/10 px-2 py-0.5 rounded">Panel</span></div>
+                        <h3 class="font-heading font-semibold text-white">Roadmap for Africa's Global Competitiveness in STI</h3>
+                        <p class="text-slate-500 text-sm mt-1">Closing panel discussion — synthesizing conference outcomes into an actionable roadmap</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 12. Lunch -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(16,185,129,.12);background:rgba(16,185,129,.03)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-emerald-500 text-sm font-medium">14:30</span>
+                        <div class="time-range">– 15:30</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-emerald-500/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded">Lunch</span></div>
+                        <h3 class="font-heading font-semibold text-white">Lunch Break</h3>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Dining Area</div>
+                </div>
+
+                <!-- 13. Conference Communiqué / Closing Ceremony -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4" style="border-color:rgba(124,58,237,.2);background:rgba(124,58,237,.04)">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-purple text-sm font-medium">15:30</span>
+                        <div class="time-range">– 16:00</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-accent-purple/20"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Closing</span></div>
+                        <h3 class="font-heading font-semibold text-white">Conference Communiqué & Closing Ceremony</h3>
+                        <p class="text-slate-500 text-sm mt-1">Presentation of the official conference communiqué and closing formalities</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 14. Vote of Thanks -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">16:00</span>
+                        <div class="time-range">– 16:15</div>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded">Remarks</span></div>
+                        <h3 class="font-heading font-semibold text-white">Vote of Thanks</h3>
+                        <p class="text-slate-500 text-sm mt-1">Final acknowledgements and expressions of gratitude</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
+                <!-- 15. National Pledge / Close -->
+                <div class="glass p-6 flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-shrink-0 w-20 text-center">
+                        <span class="font-mono text-accent-cyan text-sm font-medium">16:15</span>
+                    </div>
+                    <div class="flex-shrink-0 hidden md:block w-px h-12 bg-white/10"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1"><span class="text-[10px] font-mono tracking-widest uppercase text-slate-500/70 bg-slate-500/10 px-2 py-0.5 rounded">Close</span></div>
+                        <h3 class="font-heading font-semibold text-white">National Pledge / Final Closing</h3>
+                        <p class="text-slate-500 text-sm mt-1">End of STICONF 2026</p>
+                    </div>
+                    <div class="text-xs text-slate-600 flex-shrink-0">Main Hall</div>
+                </div>
+
             </div>
         </div>
 
@@ -107,7 +741,14 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="relative py-16 border-t border-white/5"><div class="max-w-7xl mx-auto px-6"><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"><div class="lg:col-span-2"><div class="flex items-center gap-3 mb-6"><svg viewBox="0 0 100 100" fill="none" class="w-10 h-10"><polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="url(#fg)" stroke-width="2" fill="none"/><text x="50" y="46" text-anchor="middle" fill="#00b4d8" font-family="Space Grotesk" font-size="18" font-weight="700">STI</text><text x="50" y="62" text-anchor="middle" fill="#7c3aed" font-family="Space Grotesk" font-size="10" font-weight="500">CONF</text><defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00b4d8"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs></svg><div><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF 2026</span><p class="text-[10px] text-slate-500 tracking-widest uppercase">Science · Technology · Innovation</p></div></div><p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-4">Catalysing effective linkages between research institutions and industry.</p><p class="text-xs text-slate-600">March 2026 · Abuja, Nigeria</p></div><div><h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Quick Links</h4><ul class="space-y-3"><li><a href="{% url "home" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Home</a></li><li><a href="{% url "about" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">About</a></li><li><a href="{% url "schedule" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Schedule</a></li><li><a href="{% url "sponsorship" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Sponsorship</a></li><li><a href="{% url "register" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Registration</a></li><li><a href="{% url "contact" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Contact</a></li></ul></div><div><h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Connect</h4><ul class="space-y-3"><li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-3.5 h-3.5"></i>Twitter / X</a></li><li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-3.5 h-3.5"></i>Instagram</a></li><li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i>LinkedIn</a></li><li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-3.5 h-3.5"></i>Facebook</a></li></ul><div class="mt-6"><a href="mailto:info@sticonf.com" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">info@sticonf.com</a></div></div></div><div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"><p class="text-xs text-slate-600">&copy; 2025 STICONF. All rights reserved.</p><p class="text-xs text-slate-700">International Conference on Science, Technology & Innovation</p></div></div></footer>
+<footer class="relative py-16 border-t border-white/5"><div class="max-w-7xl mx-auto px-6"><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"><div class="lg:col-span-2"><div class="flex items-center gap-3 mb-6"><svg viewBox="0 0 100 100" fill="none" class="w-10 h-10"><polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="url(#fg)" stroke-width="2" fill="none"/><text x="50" y="46" text-anchor="middle" fill="#00b4d8" font-family="Space Grotesk" font-size="18" font-weight="700">STI</text><text x="50" y="62" text-anchor="middle" fill="#7c3aed" font-family="Space Grotesk" font-size="10" font-weight="500">CONF</text><defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00b4d8"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs></svg><div><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF 2026</span><p class="text-[10px] text-slate-500 tracking-widest uppercase">Science · Technology · Innovation</p></div></div><p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-4">Catalysing effective linkages between research institutions and industry.</p><p class="text-xs text-slate-600">June 16–18, 2026 · Alero Azazi Center, Asokoro, Abuja</p></div><div><h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Quick Links</h4><ul class="space-y-3"><li><a href="{% url "home" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Home</a></li><li><a href="{% url "about" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">About</a></li><li><a href="{% url "schedule" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Schedule</a></li><li><a href="{% url "sponsorship" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Sponsorship</a></li><li><a href="{% url "register" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Registration</a></li><li><a href="{% url "contact" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Contact</a></li></ul></div><div><h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Connect</h4>
+                <ul class="space-y-3">
+                    <li><a href="https://x.com/sticonf/status/1811851958514569350" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-3.5 h-3.5"></i>Twitter / X</a></li>
+                    <li><a href="https://www.instagram.com/sticonference/" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-3.5 h-3.5"></i>Instagram</a></li>
+                    <li><a href="https://ng.linkedin.com/in/sticonf-sti-60451a335" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i>LinkedIn</a></li>
+                    <li><a href="https://www.facebook.com/STICONF/" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-3.5 h-3.5"></i>Facebook</a></li>
+                </ul>
+    <div class="mt-6"><a href="mailto:info@sticonf.com" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">info@sticonf.com</a></div></div></div><div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"><p class="text-xs text-slate-600">&copy; 2025 STICONF. All rights reserved.</p><p class="text-xs text-slate-700">International Conference on Science, Technology & Innovation</p></div></div></footer>
 <div class="toast" id="toast"><i data-lucide="check-circle" class="w-5 h-5"></i><span id="toastMsg"></span></div>
 <script>
 const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let particles=[],mouse={x:null,y:null};function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}resizeCanvas();window.addEventListener('resize',()=>{resizeCanvas();initParticles()});window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});window.addEventListener('mouseout',()=>{mouse.x=null;mouse.y=null});class Particle{constructor(){this.reset()}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*1.5+.5;this.speedX=(Math.random()-.5)*.3;this.speedY=(Math.random()-.5)*.3;this.opacity=Math.random()*.5+.1}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>canvas.width)this.speedX*=-1;if(this.y<0||this.y>canvas.height)this.speedY*=-1}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`rgba(0,180,216,${this.opacity})`;ctx.fill()}}function initParticles(){const c=Math.min(Math.floor(canvas.width*canvas.height/15000),80);particles=[];for(let i=0;i<c;i++)particles.push(new Particle)}initParticles();function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(0,180,216,${.06*(1-dist/150)})`;ctx.lineWidth=.5;ctx.stroke()}}if(mouse.x&&mouse.y){const dx=particles[i].x-mouse.x,dy=particles[i].y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<200){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(mouse.x,mouse.y);ctx.strokeStyle=`rgba(124,58,237,${.15*(1-dist/200)})`;ctx.lineWidth=.5;ctx.stroke()}}}requestAnimationFrame(animateParticles)}animateParticles();
@@ -115,7 +756,7 @@ const loaderBar=document.getElementById('loaderBar'),loaderText=document.querySe
 const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smooth:true});function raf(time){lenis.raf(time);requestAnimationFrame(raf)}requestAnimationFrame(raf);lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(time=>lenis.raf(time*1000));gsap.ticker.lagSmoothing(0);
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);document.getElementById('scrollProgress').style.transform=`scaleX(${p})`});
 let menuOpen=false;function toggleMobile(){menuOpen=!menuOpen;document.getElementById('mobile-menu').classList.toggle('open',menuOpen);const b1=document.getElementById('bar1'),b2=document.getElementById('bar2'),b3=document.getElementById('bar3');if(menuOpen){b1.style.transform='rotate(45deg) translate(4px,4px)';b2.style.opacity='0';b3.style.transform='rotate(-45deg) translate(4px,-4px)';b3.style.width='24px'}else{b1.style.transform='';b2.style.opacity='1';b3.style.transform='';b3.style.width='16px'}document.body.style.overflow=menuOpen?'hidden':''}function closeMobile(){if(menuOpen)toggleMobile()}
-function switchDay(day,btn){document.querySelectorAll('.day-content').forEach(c=>c.classList.add('hidden'));document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));document.getElementById('day'+day).classList.remove('hidden');btn.classList.add('active');gsap.fromTo('#day'+day+' .glass',{opacity:0,y:20},{opacity:1,y:0,duration:.5,stagger:.08,ease:'power2.out'})}
+function switchDay(day,btn){document.querySelectorAll('.day-content').forEach(c=>c.classList.add('hidden'));document.querySelectorAll('.day-tab').forEach(t=>t.classList.remove('active'));document.getElementById('day'+day).classList.remove('hidden');btn.classList.add('active');gsap.fromTo('#day'+day+' .glass',{opacity:0,y:20},{opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'})}
 function initAnimations(){gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.reveal').forEach((el,i)=>{gsap.fromTo(el,{opacity:0,y:40},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},delay:i%3*.1})})}
 function showToast(m,e=false){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.toggle('error',e);t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
 lucide.createIcons();

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STICONF 2026 | Home</title>
-    <meta name="description" content="STICONF 2026 — Bridging the Technology Divide: Africa's Path to Global Competitiveness in Science, Technology and Innovation.">
+    <meta name="description" content="STICONF 2026 — Bridging the Technology Divide: Strengthening Research Institutions–Industry Technology Linkages.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -109,6 +109,7 @@
         .marquee-wrapper:hover .marquee-track{animation-play-state:paused}
         .sponsor-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);transition:all .4s cubic-bezier(.16,1,.3,1);cursor:default;min-width:200px}
         .sponsor-logo:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);transform:translateY(-2px)}
+        .sponsor-logo .logo-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:-.5px;color:#fff;flex-shrink:0}
         .sponsor-logo .logo-name{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;color:#475569;white-space:nowrap;transition:color .3s}
         .sponsor-logo:hover .logo-name{color:#94a3b8}
 
@@ -148,7 +149,7 @@
 <!-- NAV -->
 <nav id="navbar">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="{% url "home" %}" class="flex items-center gap-3 group"><img src="{% static 'images/logo.png' %}" alt="STICONF Logo" class="w-8 h-8 object-contain group-hover:rotate-12 transition-transform"><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF <span class="text-accent-cyan">2026</span></span></a>
+        <a href="{% url "home" %}" class="flex items-center gap-3 group"><img src="{% static 'images/logo.png' %}" alt="STICONF Logo" class="w-5 h-5 object-contain group-hover:rotate-12 transition-transform"><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF <span class="text-accent-cyan">2026</span></span></a>
         <div class="hidden lg:flex items-center gap-8">
             <a href="{% url "home" %}" class="nav-link active">Home</a>
             <a href="{% url "about" %}" class="nav-link">About</a>
@@ -267,39 +268,15 @@
             <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-cyan mb-4">At a Glance</span>
             <h2 class="reveal font-heading text-3xl md:text-5xl font-bold text-white">Event <span class="gradient-text">Details</span></h2>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="reveal glass p-8 text-center group">
-                <div class="w-14 h-14 rounded-2xl bg-accent-cyan/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-cyan/20 transition-colors">
-                    <i data-lucide="calendar-days" class="w-7 h-7 text-accent-cyan"></i>
-                </div>
-                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Date</h3>
-                <p class="text-slate-400 text-sm">June 16–18, 2026</p>
-                <p class="text-slate-600 text-xs mt-1">Monday – Wednesday</p>
-            </div>
-            <div class="reveal glass p-8 text-center group">
-                <div class="w-14 h-14 rounded-2xl bg-accent-purple/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-purple/20 transition-colors">
-                    <i data-lucide="map-pin" class="w-7 h-7 text-accent-purple"></i>
-                </div>
-                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Venue</h3>
-                <p class="text-slate-400 text-sm">Alero Azazi Center</p>
-                <p class="text-slate-600 text-xs mt-1">NAOWA Event Arena, Asokoro, Abuja</p>
-            </div>
-            <div class="reveal glass p-8 text-center group">
-                <div class="w-14 h-14 rounded-2xl bg-accent-amber/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-amber/20 transition-colors">
-                    <i data-lucide="users" class="w-7 h-7 text-accent-amber"></i>
-                </div>
-                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Participants</h3>
-                <p class="text-slate-400 text-sm">500+ Expected</p>
-                <p class="text-slate-600 text-xs mt-1">Across Africa & Beyond</p>
-            </div>
-            <div class="reveal glass p-8 text-center group">
-                <div class="w-14 h-14 rounded-2xl bg-accent-emerald/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-emerald/20 transition-colors">
-                    <i data-lucide="mic-2" class="w-7 h-7 text-accent-emerald"></i>
-                </div>
-                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Speakers</h3>
-                <p class="text-slate-400 text-sm">50+ Speakers</p>
-                <p class="text-slate-600 text-xs mt-1">8 Technical Sub-themes</p>
-            </div>
+        <h1 class="reveal font-heading font-bold leading-[0.95] tracking-tight mb-8" id="heroTitle" style="font-size:clamp(2.5rem,7vw,6rem)">
+            <span class="block text-white">STICONF</span>
+            <span class="block gradient-text" style="font-size:clamp(1.2rem,3.5vw,2.8rem);font-weight:400;margin-top:8px">2026</span>
+        </h1>
+        <p class="reveal max-w-3xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed mb-4" id="heroTheme" style="font-weight:300">Bridging the Technology Divide</p>
+        <p class="reveal max-w-2xl mx-auto text-sm md:text-base text-slate-500 leading-relaxed mb-12" id="heroSub">Strengthening Research Institutions–Industry Technology Linkages for accelerated innovation commercialisation and socio-economic development.</p>
+        <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4" id="heroCTA">
+            <a href="{% url "register" %}" class="btn-primary"><span>Register Now</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="{% url "about" %}" class="btn-outline"><span>Learn More</span></a>
         </div>
     </div>
 </section>
@@ -573,6 +550,7 @@
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/nnpc.jpg' %}" alt="NNPC" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NNPC</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/cbn.jpg' %}" alt="Central Bank of Nigeria" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Central Bank of Nigeria</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/accessbank.jpg' %}" alt="Access Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Access Bank</span></div>
+                <!-- Duplicates for seamless loop -->
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/naseni.jpg' %}" alt="NASENI" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NASENI</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/notap.jpg' %}" alt="NOTAP" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NOTAP</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/futa.jpg' %}" alt="FUTA" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">FUTA</span></div>
@@ -603,6 +581,7 @@
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/cchub.jpg' %}" alt="Co-Creation Hub" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Co-Creation Hub</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/venturesplatform.jpg' %}" alt="Ventures Platform" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Ventures Platform</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/accessbank.jpg' %}" alt="Access Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Access Bank</span></div>
+                <!-- Duplicates for seamless loop -->
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/boi.jpg' %}" alt="Bank of Industry" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Bank of Industry</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/afdb.jpg' %}" alt="African Development Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">African Development Bank</span></div>
                 <div class="sponsor-logo"><img src="{% static 'images/sponsors/unesco.jpg' %}" alt="UNESCO" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">UNESCO</span></div>
@@ -651,10 +630,10 @@
             <div>
                 <h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Connect</h4>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-3.5 h-3.5"></i>Twitter / X</a></li>
-                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-3.5 h-3.5"></i>Instagram</a></li>
-                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i>LinkedIn</a></li>
-                    <li><a href="#" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-3.5 h-3.5"></i>Facebook</a></li>
+                    <li><a href="https://x.com/sticonf/status/1811851958514569350" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-3.5 h-3.5"></i>Twitter / X</a></li>
+                    <li><a href="https://www.instagram.com/sticonference/" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-3.5 h-3.5"></i>Instagram</a></li>
+                    <li><a href="https://ng.linkedin.com/in/sticonf-sti-60451a335" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i>LinkedIn</a></li>
+                    <li><a href="https://www.facebook.com/STICONF/" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-3.5 h-3.5"></i>Facebook</a></li>
                 </ul>
                 <div class="mt-6"><a href="mailto:info@sticonf.com" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">info@sticonf.com</a></div>
             </div>

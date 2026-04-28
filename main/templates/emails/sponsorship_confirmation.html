@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STICONF 2026 - Sponsorship Confirmed</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #00b4d8 0%, #7c3aed 100%); padding: 40px 20px; text-align: center; color: white; }
+        .header h1 { margin: 0; font-size: 28px; font-weight: 600; }
+        .header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 14px; }
+        .content { padding: 40px; }
+        .greeting { font-size: 16px; margin-bottom: 20px; }
+        .greeting strong { color: #00b4d8; }
+        .section { margin: 30px 0; }
+        .section h3 { color: #050816; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #00b4d8; padding-bottom: 10px; }
+        .details-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .details-table tr { border-bottom: 1px solid #e0e0e0; }
+        .details-table td { padding: 12px 0; }
+        .details-table .label { font-weight: 600; color: #050816; width: 40%; }
+        .details-table .value { color: #666; text-align: right; }
+        .highlight-box { background-color: #f8f9fa; border-left: 4px solid #7c3aed; padding: 20px; border-radius: 4px; margin: 20px 0; }
+        .highlight-box p { margin: 0; color: #333; }
+        .benefits { list-style: none; padding: 0; margin: 15px 0; }
+        .benefits li { padding: 8px 0; padding-left: 25px; position: relative; color: #666; }
+        .benefits li:before { content: '✓'; position: absolute; left: 0; color: #00b4d8; font-weight: bold; }
+        .footer { background-color: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 1px solid #e0e0e0; }
+        .footer p { margin: 5px 0; font-size: 13px; color: #666; }
+        .footer-link { color: #00b4d8; text-decoration: none; }
+        .footer-link:hover { text-decoration: underline; }
+        .button { display: inline-block; background-color: #00b4d8; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; margin: 20px 0; font-weight: 600; }
+        .button:hover { background-color: #0095ad; }
+        .amount { font-size: 24px; font-weight: bold; color: #00b4d8; }
+        .tier-badge { display: inline-block; background-color: #7c3aed; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Thank You for Sponsoring STICONF 2026!</h1>
+            <p>Your sponsorship payment has been confirmed</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Greeting -->
+            <div class="greeting">
+                Dear <strong>{{ contact_name }}</strong>,
+            </div>
+
+            <p>Thank you for your generous sponsorship of STICONF 2026! We're excited to have {{ company_name }} as a valued partner in making this landmark conference a success.</p>
+
+            <!-- Sponsorship Details Section -->
+            <div class="section">
+                <h3>Sponsorship Details</h3>
+                <table class="details-table">
+                    <tr>
+                        <td class="label">Company</td>
+                        <td class="value">{{ company_name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Contact Person</td>
+                        <td class="value">{{ contact_name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Sponsorship Tier</td>
+                        <td class="value"><span class="tier-badge">{{ tier }}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Amount Paid</td>
+                        <td class="value"><span class="amount">{{ amount }}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Payment Reference</td>
+                        <td class="value"><strong>{{ reference }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Payment Status</td>
+                        <td class="value" style="color: #10b981; font-weight: 600;">✓ Confirmed</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- What Comes Next -->
+            <div class="section">
+                <h3>What Comes Next</h3>
+                <p>Our sponsorship team will contact you within 24 business hours to:</p>
+                <ul class="benefits">
+                    <li>Finalize sponsorship details and branding requirements</li>
+                    <li>Discuss exhibition booth setup and placement</li>
+                    <li>Coordinate speaking slots or panel participation (if applicable to your tier)</li>
+                    <li>Arrange logo placement across all marketing materials</li>
+                    <li>Confirm attendance passes and special arrangements</li>
+                </ul>
+            </div>
+
+            <!-- Quick Information -->
+            <div class="highlight-box">
+                <p><strong>📍 Conference Details</strong></p>
+                <p>STICONF 2026 - Africa's Premier Science, Technology & Innovation Conference</p>
+                <p><strong>Dates:</strong> March 2026 | <strong>Location:</strong> Abuja, Nigeria</p>
+                <p><strong>Expected Attendance:</strong> 500+ delegates from academia, industry, government, and investment community</p>
+            </div>
+
+            <!-- Support Section -->
+            <div class="section">
+                <h3>Need Assistance?</h3>
+                <p>If you have any questions or need further assistance, please don't hesitate to reach out:</p>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:sponsorship@sticonf.com" style="color: #00b4d8; text-decoration: none;">sponsorship@sticonf.com</a><br/>
+                    <strong>Email:</strong> <a href="mailto:info@sticonf.com" style="color: #00b4d8; text-decoration: none;">info@sticonf.com</a>
+                </p>
+            </div>
+
+            <!-- Closing -->
+            <p style="margin-top: 40px; font-size: 14px;">We look forward to a successful partnership with you at STICONF 2026!</p>
+            <p>
+                <strong>Best regards,</strong><br/>
+                <strong>The STICONF 2026 Team</strong><br/>
+                <em>Catalysing effective linkages between research institutions and industry</em>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>STICONF 2026</strong></p>
+            <p>International Conference on Science, Technology & Innovation</p>
+            <p style="margin-top: 15px; font-size: 12px;">
+                <a href="https://sticonf.com" class="footer-link">Visit Website</a> | 
+                <a href="mailto:info@sticonf.com" class="footer-link">Contact Us</a>
+            </p>
+            <p style="margin-top: 15px; color: #999; font-size: 11px;">
+                This is an automated email. Please do not reply directly to this message.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
