@@ -12,6 +12,7 @@ from django.utils.html import strip_tags
 from main.models import Sponsorship, SponsorshipTier, Registration, Contact
 import requests
 import uuid
+import json
 from decimal import Decimal
 
 
@@ -447,3 +448,132 @@ def send_sponsorship_confirmation(sponsorship):
         )
     except Exception as e:
         print(f"Error sending admin notification email: {e}")
+
+
+@csrf_exempt
+def get_sponsorship_status(request):
+    """Get current status of a sponsorship payment"""
+    if request.method == 'GET':
+        reference = request.GET.get('reference')
+        if not reference:
+            return JsonResponse({'success': False, 'message': 'Missing reference'}, status=400)
+        
+        try:
+            sponsorship = Sponsorship.objects.get(reference=reference)
+            return JsonResponse({
+                'success': True,
+                'status': sponsorship.status,
+                'reference': reference
+            })
+        except Sponsorship.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Sponsorship not found'}, status=404)
+    
+    return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
+
+
+# ===== FLUTTERWAVE WEBHOOK =====
+@csrf_exempt
+def flutterwave_webhook(request):
+    """
+    Webhook endpoint to receive payment status updates from Flutterwave
+    Called by Flutterwave after payment completion
+    
+    Security: Verifies webhook signature to ensure request is from Flutterwave
+    """
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
+    
+    try:
+        # Get webhook signature from header
+        signature = request.headers.get('verificationhash')
+        if not signature:
+            print("Webhook: Missing signature header")
+            return JsonResponse({'success': False, 'message': 'Missing signature'}, status=400)
+        
+        # Get raw request body
+        payload_body = request.body
+        
+        # Import webhook verification function
+        from main.flutterwave_utils import verify_webhook_signature, get_payment_status_from_webhook
+        
+        # Verify the webhook signature
+        if not verify_webhook_signature(payload_body, signature):
+            print("Webhook: Invalid signature")
+            return JsonResponse({'success': False, 'message': 'Invalid signature'}, status=401)
+        
+        # Parse webhook data
+        webhook_data = json.loads(payload_body)
+        
+        # Extract payment status
+        status, tx_ref, transaction_id = get_payment_status_from_webhook(webhook_data)
+        
+        if not tx_ref:
+            print("Webhook: Missing transaction reference")
+            return JsonResponse({'success': False, 'message': 'Invalid webhook data'}, status=400)
+        
+        print(f"Webhook: Processing payment {tx_ref} - Status: {status}")
+        
+        # Get the sponsorship record
+        sponsorship = Sponsorship.objects.filter(reference=tx_ref).first()
+        if not sponsorship:
+            print(f"Webhook: Sponsorship not found for reference {tx_ref}")
+            return JsonResponse({'success': False, 'message': 'Sponsorship not found'}, status=404)
+        
+        # Update sponsorship based on payment status
+        if status == 'paid':
+            sponsorship.mark_as_paid()
+            sponsorship.transaction_id = transaction_id
+            sponsorship.save()
+            
+            # Send confirmation emails
+            try:
+                send_sponsorship_confirmation(sponsorship)
+                print(f"Webhook: Confirmation emails sent for {tx_ref}")
+            except Exception as e:
+                print(f"Webhook: Email sending error: {e}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': 'Payment processed successfully',
+                'reference': tx_ref
+            })
+        
+        elif status == 'failed':
+            sponsorship.status = 'failed'
+            sponsorship.transaction_id = transaction_id
+            sponsorship.save()
+            print(f"Webhook: Payment failed for {tx_ref}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': 'Payment marked as failed'
+            })
+        
+        elif status == 'cancelled':
+            sponsorship.status = 'cancelled'
+            sponsorship.transaction_id = transaction_id
+            sponsorship.save()
+            print(f"Webhook: Payment cancelled for {tx_ref}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': 'Payment marked as cancelled'
+            })
+        
+        else:
+            # Pending - don't update
+            print(f"Webhook: Payment pending for {tx_ref}")
+            return JsonResponse({
+                'success': True,
+                'message': 'Payment status updated'
+            })
+    
+    except json.JSONDecodeError:
+        print("Webhook: Invalid JSON payload")
+        return JsonResponse({'success': False, 'message': 'Invalid JSON'}, status=400)
+    
+    except Exception as e:
+        print(f"Webhook processing error: {e}")
+        import traceback
+        traceback.print_exc()
+        return JsonResponse({'success': False, 'message': str(e)}, status=500)

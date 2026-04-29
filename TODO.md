@@ -1,13 +1,16 @@
-# STICONF Tasks
+# Registration Fix - Brevo API Issue
+Progress: 70% ✅
 
-## About Page Gallery Images [IN PROGRESS]
-- [ ] Update about.html gallery - fix broken/missing images, remove duplicates
-- [ ] Test all images load correctly
-- [ ] Run collectstatic
-- [ ] Commit/push
+## Plan Breakdown
+Progress: 80% ✅
 
-## Render Deployment [DONE]
-- [x] All files updated
-- [x] Local deps installed (Django 4.2.30)
+- [x] 1. Brevo API ✅ Working  
+- [x] 2. Flutterwave API failing (redirect_url missing)
+- [x] 3. Fixed Flutterwave test script
+- [ ] 4. Re-run `python test_flutterwave.py` 
+- [ ] 5. Copy working keys → Render dashboard
+- [ ] 6. Deploy → Test payment form live
 
-**Priority: Gallery fix first**
+
+**Next:** Run `python test_brevo_api.py`
+

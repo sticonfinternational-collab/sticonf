@@ -14,4 +14,6 @@ urlpatterns = [
     path('api/sponsorship-tiers/', views.get_sponsorship_tiers_json, name='get_sponsorship_tiers'),
     path('api/initiate-sponsorship-payment/', views.initiate_sponsorship_payment, name='initiate_sponsorship_payment'),
     path('api/verify-sponsorship-payment/', views.verify_sponsorship_payment, name='verify_sponsorship_payment'),
+    path('api/sponsorship-status/', views.get_sponsorship_status, name='get_sponsorship_status'),
+    path('api/webhooks/flutterwave/', views.flutterwave_webhook, name='flutterwave_webhook'),
 ]
