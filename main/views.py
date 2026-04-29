@@ -14,7 +14,7 @@ import requests
 import uuid
 import json
 from decimal import Decimal
-
+from django.conf import settings
 
 # Create your views here.
 def home(request):
@@ -123,7 +123,8 @@ def handle_contact(request):
 
 def sponsorship(request):
     context = {
-        'FLUTTERWAVE_PUBLIC_KEY': settings.FLUTTERWAVE_PUBLIC_KEY
+        'FLUTTERWAVE_PUBLIC_KEY': settings.FLUTTERWAVE_PUBLIC_KEY,
+        
     }
     return render(request, 'sponsorship.html', context)
 
