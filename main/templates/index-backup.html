@@ -1,4 +1,741 @@
 {% load static %}
+first section is the main backup
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STICONF 2026 | Home</title>
+    <meta name="description" content="STICONF 2026 — Bridging the Technology Divide: Strengthening Research Institutions–Industry Technology Linkages.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/logo.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/logo.png" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/logo.png" %}">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config={theme:{extend:{colors:{dark:{900:'#050816',800:'#0a0f24',700:'#111832',600:'#1a2040'},accent:{cyan:'#00b4d8',purple:'#7c3aed',blue:'#3b82f6',amber:'#f59e0b',emerald:'#10b981'}},fontFamily:{heading:['Space Grotesk','sans-serif'],body:['Inter','sans-serif'],mono:['JetBrains Mono','monospace']}}}}
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        ::selection{background:#7c3aed;color:#fff}
+        body{font-family:'Inter',sans-serif;background:#050816;color:#e2e8f0;overflow-x:hidden}
+        h1,h2,h3,h4,h5,h6{font-family:'Space Grotesk',sans-serif}
+        #loader{position:fixed;inset:0;z-index:9999;background:#050816;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+        #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .loader-logo{width:100px;height:100px;position:relative}
+        .loader-hex{position:absolute;inset:0;animation:hexSpin 2s ease-in-out infinite}
+        .loader-hex svg{width:100%;height:100%}
+        .loader-ring{position:absolute;inset:-12px;border:2px solid transparent;border-top-color:#00b4d8;border-radius:50%;animation:ringRotate 1.5s linear infinite}
+        .loader-ring:nth-child(2){inset:-22px;border-top-color:#7c3aed;animation-duration:2s;animation-direction:reverse}
+        .loader-text{margin-top:32px;font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:6px;text-transform:uppercase;color:#64748b;overflow:hidden}
+        .loader-text span{display:inline-block;transform:translateY(100%);opacity:0}
+        .loader-sub{margin-top:12px;font-size:11px;letter-spacing:3px;color:#475569;opacity:0}
+        .loader-bar{width:200px;height:2px;background:rgba(255,255,255,.06);margin-top:40px;border-radius:2px;overflow:hidden}
+        .loader-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#00b4d8,#7c3aed);border-radius:2px;transition:width .3s}
+        @keyframes hexSpin{0%,100%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.05)}}
+        @keyframes ringRotate{to{transform:rotate(360deg)}}
+        #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+        #navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .4s cubic-bezier(.16,1,.3,1)}
+        #navbar.scrolled{padding:12px 0;background:rgba(5,8,22,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .nav-link{position:relative;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;transition:color .3s;padding:4px 0;text-decoration:none}
+        .nav-link:hover,.nav-link.active{color:#fff}
+        .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#00b4d8,#7c3aed);transition:width .3s}
+        .nav-link:hover::after,.nav-link.active::after{width:100%}
+        #mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(5,8,22,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(100%);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+        #mobile-menu.open{transform:translateX(0)}
+        .mobile-link{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:#94a3b8;transition:color .3s,transform .3s;text-transform:uppercase;letter-spacing:2px;text-decoration:none}
+        .mobile-link:hover{color:#fff;transform:translateX(8px)}
+        .gradient-text{background:linear-gradient(135deg,#00b4d8 0%,#7c3aed 50%,#00b4d8 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 4s ease-in-out infinite}
+        @keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:200% center}}
+        .glass{background:rgba(255,255,255,.03);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.06);border-radius:16px;transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .glass:hover{background:rgba(255,255,255,.06);border-color:rgba(0,180,216,.15);transform:translateY(-4px);box-shadow:0 20px 60px -15px rgba(0,180,216,.1)}
+        .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,#00b4d8,#7c3aed);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;border:none;border-radius:12px;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;text-decoration:none}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px -8px rgba(0,180,216,.4)}
+        .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#7c3aed,#00b4d8);opacity:0;transition:opacity .3s}
+        .btn-primary:hover::before{opacity:1}
+        .btn-primary span,.btn-primary i{position:relative;z-index:1}
+        .btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;color:#e2e8f0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);border-radius:12px;cursor:pointer;transition:all .3s;text-decoration:none}
+        .btn-outline:hover{border-color:#00b4d8;color:#00b4d8;background:rgba(0,180,216,.05);transform:translateY(-2px)}
+        .float-shape{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.4}
+        .scroll-indicator{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#00b4d8,#7c3aed);z-index:101;transform-origin:left;transform:scaleX(0)}
+        .section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
+        .reveal{opacity:0;transform:translateY(40px)}
+        .counter-value{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;line-height:1}
+        @media(max-width:640px){.counter-value{font-size:36px}}
+
+        /* ===== HERO SLIDESHOW ===== */
+        .hero-slideshow{position:relative;min-height:100vh;overflow:hidden}
+        .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease-in-out;z-index:1}
+        .hero-slide.active{opacity:1;z-index:2}
+        .hero-slide img{width:100%;height:100%;object-fit:cover}
+        .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.4) 40%,rgba(5,8,22,.7) 70%,rgba(5,8,22,.95) 100%);z-index:3}
+        .hero-slide.active .hero-slide-content{animation:slideUp .8s ease-out .4s both}
+        @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .hero-dots{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:12px}
+        .hero-dot{width:12px;height:3px;border-radius:2px;background:rgba(255,255,255,.25);cursor:pointer;transition:all .4s}
+        .hero-dot.active{width:40px;background:linear-gradient(90deg,#00b4d8,#7c3aed)}
+        .hero-progress{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,#00b4d8,#7c3aed);z-index:10;transition:width .1s linear}
+        .hero-nav-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(5,8,22,.4);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;color:#fff}
+        .hero-nav-btn:hover{background:rgba(0,180,216,.15);border-color:rgba(0,180,216,.4)}
+        .hero-nav-btn.prev{left:24px}
+        .hero-nav-btn.next{right:24px}
+
+        /* ===== IMAGE GRID ===== */
+        .img-grid-item{position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/3;cursor:pointer}
+        .img-grid-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1),filter .7s}
+        .img-grid-item:hover img{transform:scale(1.08);filter:brightness(1.1)}
+        .img-grid-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(5,8,22,.6) 100%);opacity:0;transition:opacity .5s}
+        .img-grid-item:hover::after{opacity:1}
+        .img-grid-item .img-label{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;z-index:2;transform:translateY(10px);opacity:0;transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .img-grid-item:hover .img-label{transform:translateY(0);opacity:1}
+
+        /* ===== SCHEDULE PREVIEW ===== */
+        .schedule-item{display:flex;gap:16px;padding:16px 20px;border-radius:12px;border:1px solid rgba(255,255,255,.04);background:rgba(255,255,255,.02);transition:all .4s}
+        .schedule-item:hover{background:rgba(255,255,255,.05);border-color:rgba(0,180,216,.1);transform:translateX(4px)}
+        .schedule-time{flex-shrink:0;width:72px;text-align:center;padding-top:2px}
+        .schedule-line{width:2px;height:100%;background:linear-gradient(180deg,rgba(0,180,216,.3),rgba(124,58,237,.3));border-radius:1px}
+
+        /* ===== SPONSOR MARQUEE ===== */
+        .marquee-wrapper{overflow:hidden;position:relative}
+        .marquee-wrapper::before,.marquee-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+        .marquee-wrapper::before{left:0;background:linear-gradient(90deg,#050816,transparent)}
+        .marquee-wrapper::after{right:0;background:linear-gradient(-90deg,#050816,transparent)}
+        .marquee-track{display:flex;width:max-content;gap:24px}
+        .marquee-track.left{animation:scrollLeft 50s linear infinite}
+        .marquee-track.right{animation:scrollRight 50s linear infinite}
+        @keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        @keyframes scrollRight{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+        .marquee-wrapper:hover .marquee-track{animation-play-state:paused}
+        .sponsor-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);transition:all .4s cubic-bezier(.16,1,.3,1);cursor:default;min-width:200px}
+        .sponsor-logo:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);transform:translateY(-2px)}
+        .sponsor-logo .logo-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:-.5px;color:#fff;flex-shrink:0}
+        .sponsor-logo .logo-name{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;color:#475569;white-space:nowrap;transition:color .3s}
+        .sponsor-logo:hover .logo-name{color:#94a3b8}
+
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#050816}
+        ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.2)}
+    </style>
+</head>
+<body>
+<div class="scroll-indicator" id="scrollProgress"></div>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-logo">
+        <div class="loader-ring"></div>
+        <img src="{% static 'images/logo.png' %}" alt="STICONF Logo" class="w-full h-full object-contain">
+        <div class="loader-ring"></div>
+    </div>
+    <div class="loader-text"><span>The Official Website of STICONF</span></div>
+    <div class="loader-sub">International Conference on Science, Technology & Innovation</div>
+    <div class="loader-bar"><div class="loader-bar-fill" id="loaderBar"></div></div>
+</div>
+
+<canvas id="particles"></canvas>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+    <a href="{% url "home" %}" class="mobile-link" onclick="closeMobile()">Home</a>
+    <a href="{% url "about" %}" class="mobile-link" onclick="closeMobile()">About</a>
+    <a href="{% url "schedule" %}" class="mobile-link" onclick="closeMobile()">Schedule</a>
+    <a href="{% url "sponsorship" %}" class="mobile-link" onclick="closeMobile()">Sponsorship</a>
+    <a href="{% url "register" %}" class="mobile-link" onclick="closeMobile()">Registration</a>
+    <a href="{% url "contact" %}" class="mobile-link" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <a href="{% url "home" %}" class="flex items-center gap-3 group"><img src="{% static 'images/logo.png' %}" alt="STICONF Logo" class="w-5 h-5 object-contain group-hover:rotate-12 transition-transform"><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF <span class="text-accent-cyan">2026</span></span></a>
+        <div class="hidden lg:flex items-center gap-8">
+            <a href="{% url "home" %}" class="nav-link active">Home</a>
+            <a href="{% url "about" %}" class="nav-link">About</a>
+            <a href="{% url "schedule" %}" class="nav-link">Schedule</a>
+            <a href="{% url "sponsorship" %}" class="nav-link">Sponsorship</a>
+            <a href="{% url "contact" %}" class="nav-link">Contact</a>
+        </div>
+        <div class="hidden lg:block"><a href="{% url "register" %}" class="btn-primary text-xs"><span>Register Now</span></a></div>
+        <button id="menuToggle" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" onclick="toggleMobile()">
+            <span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center" id="bar1"></span>
+            <span class="w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
+            <span class="w-4 h-0.5 bg-white transition-all duration-300 origin-center" id="bar3"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- 1. HERO SLIDESHOW                             -->
+<!-- ============================================ -->
+<section class="hero-slideshow" id="heroSlideshow">
+    <!-- Slide 1 -->
+    <div class="hero-slide active">
+        <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777359767/image12_b9ugh2.jpg" alt="STICONF 2026 Conference">
+        <div class="hero-overlay"></div>
+        <div class="hero-slide-content absolute inset-0 z-[4] flex flex-col items-center justify-center text-center px-6">
+            <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-accent-cyan/20 bg-accent-cyan/5 text-accent-cyan text-xs font-mono tracking-widest uppercase mb-6">
+                <span class="w-2 h-2 rounded-full bg-accent-cyan animate-pulse"></span>
+                June 16–18, 2026
+            </span>
+            <h1 class="font-heading font-bold leading-[0.95] tracking-tight mb-6" style="font-size:clamp(2.8rem,7vw,6rem)">
+                <span class="block text-white">STICONF</span>
+                <span class="block gradient-text" style="font-size:clamp(1rem,3vw,2.4rem);font-weight:400;margin-top:4px">2026</span>
+            </h1>
+            <p class="max-w-2xl text-base md:text-lg text-slate-300 leading-relaxed mb-10" style="font-weight:300">Bridging the Technology Divide — Strengthening Research Institutions–Industry Technology Linkages</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="{% url "register" %}" class="btn-primary"><span>Register Now</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                <a href="#event-details" class="btn-outline"><span>Event Details</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="hero-slide">
+        <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777359768/image_22_xcrnvm.jpg" alt="Conference Keynote Session">
+        <div class="hero-overlay"></div>
+        <div class="hero-slide-content absolute inset-0 z-[4] flex flex-col items-center justify-center text-center px-6">
+            <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-accent-purple/20 bg-accent-purple/5 text-accent-purple text-xs font-mono tracking-widest uppercase mb-6">
+                <i data-lucide="mic" class="w-3 h-3"></i>
+                3 Days of Impact
+            </span>
+            <h2 class="font-heading font-bold text-white text-3xl md:text-5xl mb-4">Keynotes & Technical Sessions</h2>
+            <p class="max-w-xl text-slate-300 text-base leading-relaxed mb-8">Featuring 50+ speakers across 8 technical sub-themes covering AI, health innovation, green technology, and more.</p>
+            <a href="{% url "schedule" %}" class="btn-outline"><span>View Schedule</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="hero-slide">
+        <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777359769/image_23_vmwf4n.jpg" alt="Networking and Partnerships">
+        <div class="hero-overlay"></div>
+        <div class="hero-slide-content absolute inset-0 z-[4] flex flex-col items-center justify-center text-center px-6">
+            <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-accent-amber/20 bg-accent-amber/5 text-accent-amber text-xs font-mono tracking-widest uppercase mb-6">
+                <i data-lucide="handshake" class="w-3 h-3"></i>
+                Build Connections
+            </span>
+            <h2 class="font-heading font-bold text-white text-3xl md:text-5xl mb-4">Partnerships That Transform</h2>
+            <p class="max-w-xl text-slate-300 text-base leading-relaxed mb-8">Live MOU signings, innovation pitch sessions, and curated networking with industry leaders, policymakers, and investors.</p>
+            <a href="{% url "about" %}" class="btn-outline"><span>Learn More</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="hero-slide">
+        <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777359770/image17_q7nywk.jpg" alt="Innovation Showcase">
+        <div class="hero-overlay"></div>
+        <div class="hero-slide-content absolute inset-0 z-[4] flex flex-col items-center justify-center text-center px-6">
+            <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-accent-emerald/20 bg-accent-emerald/5 text-accent-emerald text-xs font-mono tracking-widest uppercase mb-6">
+                <i data-lucide="rocket" class="w-3 h-3"></i>
+                Abuja, Nigeria
+            </span>
+            <h2 class="font-heading font-bold text-white text-3xl md:text-5xl mb-4">Africa's Innovation Future</h2>
+            <p class="max-w-xl text-slate-300 text-base leading-relaxed mb-8">Join 500+ delegates from across Africa and beyond to shape the continent's path to global competitiveness in STI.</p>
+            <a href="{% url "register" %}" class="btn-primary"><span>Secure Your Place</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <button class="hero-nav-btn prev" onclick="heroNav(-1)"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+    <button class="hero-nav-btn next" onclick="heroNav(1)"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+
+    <!-- Dots -->
+    <div class="hero-dots" id="heroDots">
+        <div class="hero-dot active" onclick="heroGoTo(0)"></div>
+        <div class="hero-dot" onclick="heroGoTo(1)"></div>
+        <div class="hero-dot" onclick="heroGoTo(2)"></div>
+        <div class="hero-dot" onclick="heroGoTo(3)"></div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="hero-progress" id="heroProgress"></div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
+        <span class="text-[10px] uppercase tracking-[3px] text-slate-400">Scroll</span>
+        <div class="w-5 h-8 rounded-full border border-slate-500 flex items-start justify-center p-1"><div class="w-1 h-2 rounded-full bg-accent-cyan animate-bounce"></div></div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 2. EVENT DETAILS                              -->
+<!-- ============================================ -->
+<section class="relative py-24 md:py-32 overflow-hidden" id="event-details">
+    <div class="float-shape w-72 h-72 bg-accent-cyan -top-20 -left-20" style="opacity:.1"></div>
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-cyan mb-4">At a Glance</span>
+            <h2 class="reveal font-heading text-3xl md:text-5xl font-bold text-white">Event <span class="gradient-text">Details</span></h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-cyan/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-cyan/20 transition-colors">
+                    <i data-lucide="calendar-days" class="w-7 h-7 text-accent-cyan"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Date</h3>
+                <p class="text-slate-400 text-sm">June 16–18, 2026</p>
+                <p class="text-slate-600 text-xs mt-1">Monday – Wednesday</p>
+            </div>
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-purple/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-purple/20 transition-colors">
+                    <i data-lucide="map-pin" class="w-7 h-7 text-accent-purple"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Venue</h3>
+                <p class="text-slate-400 text-sm">Ty Danjuma Foundation</p>
+                <p class="text-slate-600 text-xs mt-1">Plot 988, Cadastral Zone A00, Central Business District, Abuja 900103, Federal Capital Territory</p>
+            </div>
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-amber/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-amber/20 transition-colors">
+                    <i data-lucide="users" class="w-7 h-7 text-accent-amber"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Participants</h3>
+                <p class="text-slate-400 text-sm">500+ Expected</p>
+                <p class="text-slate-600 text-xs mt-1">Across Africa & Beyond</p>
+            </div>
+            <div class="reveal glass p-8 text-center group">
+                <div class="w-14 h-14 rounded-2xl bg-accent-emerald/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-accent-emerald/20 transition-colors">
+                    <i data-lucide="mic-2" class="w-7 h-7 text-accent-emerald"></i>
+                </div>
+                <h3 class="font-heading font-semibold text-white text-sm uppercase tracking-wider mb-2">Speakers</h3>
+                <p class="text-slate-400 text-sm">50+ Speakers</p>
+                <p class="text-slate-600 text-xs mt-1">8 Technical Sub-themes</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================ -->
+<!-- 3. THEME OF THE EVENT                         -->
+<!-- ============================================ -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="float-shape w-96 h-96 bg-accent-purple top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:.08"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-purple mb-6">Conference Theme</span>
+        <h2 class="reveal font-heading text-3xl md:text-5xl font-bold text-white leading-tight mb-8">
+            <span class="gradient-text">Bridging the Tech Divide</span>
+        </h2>
+        <p class="reveal text-lg md:text-xl text-slate-300 leading-relaxed mb-6" style="font-weight:300">
+            Africa's Path to Global Competitiveness in Science, Technology and Innovation
+        </p>
+        <p class="reveal text-sm md:text-base text-slate-500 leading-relaxed max-w-3xl mx-auto mb-12">
+            The International Conference on Science, Technology and Innovation (STI) is a high-level, multi-stakeholder platform designed to accelerate Africa's transition into a knowledge-driven and innovation-led economy. The conference brings together policymakers, researchers, industry leaders, entrepreneurs, investors, and development partners to explore practical pathways for strengthening Africa's position in the global innovation landscape.
+        </p>
+        <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto">
+            <div class="text-center"><div class="counter-value gradient-text" data-target="500">0</div><div class="text-xs text-slate-500 mt-1 uppercase tracking-widest font-mono">Participants</div></div>
+            <div class="text-center"><div class="counter-value gradient-text" data-target="50">0</div><div class="text-xs text-slate-500 mt-1 uppercase tracking-widest font-mono">Speakers</div></div>
+            <div class="text-center"><div class="counter-value gradient-text" data-target="3">0</div><div class="text-xs text-slate-500 mt-1 uppercase tracking-widest font-mono">Days</div></div>
+            <div class="text-center"><div class="counter-value gradient-text" data-target="8">0</div><div class="text-xs text-slate-500 mt-1 uppercase tracking-widest font-mono">Sub-themes</div></div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================ -->
+<!-- 4. SIX IMAGES — 3 TOP, 3 BOTTOM              -->
+<!-- ============================================ -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14">
+            <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-cyan mb-4">Glimpses</span>
+            <h2 class="reveal font-heading text-3xl md:text-4xl font-bold text-white">Conference <span class="gradient-text">Highlights</span></h2>
+        </div>
+
+        <!-- Top Row — 3 images -->
+        <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
+            <div class="img-grid-item">
+                <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777360359/IMG-20260424-WA0051_zki2co.jpg" alt="Keynote Address">
+                <div class="img-label"><p class="text-white font-heading font-semibold text-sm">Policy Influence</p><p class="text-slate-400 text-xs mt-0.5">From ECOWAS President & Industry Leaders</p></div>
+            </div>
+            <div class="img-grid-item">
+                <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777360351/IMG-20260424-WA0047_zdwfge.jpg" alt="Technical Sessions">
+                <div class="img-label"><p class="text-white font-heading font-semibold text-sm">Cutting Edge Research</p><p class="text-slate-400 text-xs mt-0.5">8 Sub-themes Across 3 Days</p></div>
+            </div>
+            <div class="img-grid-item">
+                <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777360357/IMG-20260424-WA0049_qohdaq.jpg" alt="Panel Discussions">
+                <div class="img-label"><p class="text-white font-heading font-semibold text-sm">Strategic Engagement & Partnership</p><p class="text-slate-400 text-xs mt-0.5">Talent Pipeline, Policy & Roadmap</p></div>
+            </div>
+        </div>
+
+        <!-- Bottom Row — 3 images -->
+        <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div class="img-grid-item">
+                <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777360358/IMG-20260424-WA0048_nkvrn0.jpg" alt="Innovation Showcase">
+                <div class="img-label"><p class="text-white font-heading font-semibold text-sm">Innovation Pitch Sessions</p><p class="text-slate-400 text-xs mt-0.5">Startups Pitch to Investors</p></div>
+            </div>
+            <div class="img-grid-item">
+                <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777360351/IMG-20260424-WA0047_zdwfge.jpg" alt="MOU Signing">
+                <div class="img-label"><p class="text-white font-heading font-semibold text-sm">Shared Country Experiences</p><p class="text-slate-400 text-xs mt-0.5">Live Partnership Agreements</p></div>
+            </div>
+            <div class="img-grid-item">
+                <img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777487974/IMG-20260424-WA0046_bdoijr.jpg" alt="Country Presentations">
+                <div class="img-label"><p class="text-white font-heading font-semibold text-sm">Implementation Roadmap</p><p class="text-slate-400 text-xs mt-0.5">6 African Nations Share STI Policies</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================ -->
+<!-- 5. DAY 1 SCHEDULE PREVIEW                     -->
+<!-- ============================================ -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="float-shape w-80 h-80 bg-accent-blue -top-20 right-0" style="opacity:.1"></div>
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-14">
+            <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-purple mb-4">Programme Preview</span>
+            <h2 class="reveal font-heading text-3xl md:text-5xl font-bold text-white mb-4">Program<span class="gradient-text"> Schedule</span></h2>
+            <p class="reveal text-slate-500 text-sm">Monday, June 16, 2026 — Opening Ceremony, Keynote & Technical Sessions</p>
+        </div>
+
+        {% comment %} <div class="reveal max-w-3xl mx-auto space-y-3">
+            <!-- Registration -->
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <span class="font-mono text-accent-cyan text-sm font-medium">08:00</span>
+                    <div class="text-[10px] text-slate-600 font-mono mt-0.5">– 09:00</div>
+                </div>
+                <div class="w-px bg-gradient-to-b from-accent-cyan/30 to-accent-purple/30 self-stretch flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded inline-block mb-1">Registration</span>
+                    <h4 class="font-heading font-semibold text-white text-sm">Arrival and Registration of Participants</h4>
+                </div>
+            </div>
+
+            <!-- Opening Ceremony -->
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <span class="font-mono text-accent-purple text-sm font-medium">09:00</span>
+                    <div class="text-[10px] text-slate-600 font-mono mt-0.5">– 10:00</div>
+                </div>
+                <div class="w-px bg-gradient-to-b from-accent-purple/30 to-accent-amber/30 self-stretch flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded inline-block mb-1">Opening Ceremony</span>
+                    <h4 class="font-heading font-semibold text-white text-sm">National Anthem, Welcome Address & Opening Remarks</h4>
+                    <p class="text-slate-600 text-xs mt-1">Welcome to Nigeria Ltd · Alpha Helix Foundation · Hon. Minister, FMIST</p>
+                </div>
+            </div>
+
+            <!-- Keynote -->
+            <div class="schedule-item" style="border-color:rgba(124,58,237,.15);background:rgba(124,58,237,.04)">
+                <div class="schedule-time">
+                    <span class="font-mono text-accent-purple text-sm font-medium">10:00</span>
+                    <div class="text-[10px] text-slate-600 font-mono mt-0.5">– 11:00</div>
+                </div>
+                <div class="w-px bg-accent-purple/30 self-stretch flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-accent-purple/70 bg-accent-purple/10 px-2 py-0.5 rounded inline-block mb-1">Keynote</span>
+                    <h4 class="font-heading font-semibold text-white text-sm">Africa in the Global Innovation Race: Opportunities and Challenges</h4>
+                    <p class="text-slate-600 text-xs mt-1">By the President of ECOWAS</p>
+                </div>
+            </div>
+
+            <!-- Tea Break -->
+            <div class="schedule-item" style="border-color:rgba(16,185,129,.1);background:rgba(16,185,129,.02)">
+                <div class="schedule-time">
+                    <span class="font-mono text-emerald-500 text-sm font-medium">11:15</span>
+                    <div class="text-[10px] text-slate-600 font-mono mt-0.5">– 12:30</div>
+                </div>
+                <div class="w-px bg-emerald-500/20 self-stretch flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-emerald-500/70 bg-emerald-500/10 px-2 py-0.5 rounded inline-block mb-1">Break</span>
+                    <h4 class="font-heading font-semibold text-white text-sm">Tea Break & Networking</h4>
+                </div>
+            </div>
+
+            <!-- Plenary -->
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <span class="font-mono text-accent-blue text-sm font-medium">13:00</span>
+                    <div class="text-[10px] text-slate-600 font-mono mt-0.5">– 13:30</div>
+                </div>
+                <div class="w-px bg-gradient-to-b from-accent-blue/30 to-accent-cyan/30 self-stretch flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-accent-blue/70 bg-accent-blue/10 px-2 py-0.5 rounded inline-block mb-1">Plenary</span>
+                    <h4 class="font-heading font-semibold text-white text-sm">Policy Frameworks for Closing Africa's Technology Gap</h4>
+                    <p class="text-slate-600 text-xs mt-1">STI Governance · Regulatory Frameworks · Digital Transformation</p>
+                </div>
+            </div>
+
+            <!-- Technical Sessions -->
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <span class="font-mono text-accent-cyan text-sm font-medium">13:30</span>
+                    <div class="text-[10px] text-slate-600 font-mono mt-0.5">– 14:30</div>
+                </div>
+                <div class="w-px bg-gradient-to-b from-accent-cyan/30 to-accent-amber/30 self-stretch flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-accent-cyan/70 bg-accent-cyan/10 px-2 py-0.5 rounded inline-block mb-1">Technical</span>
+                    <h4 class="font-heading font-semibold text-white text-sm">Financing STI & Research Commercialization</h4>
+                    <p class="text-slate-600 text-xs mt-1">VC Funding · PPPs · IP Ecosystem · University–Industry Partnerships</p>
+                </div>
+            </div>
+
+            <!-- Evening -->
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <span class="font-mono text-rose-400 text-sm font-medium">15:30</span>
+                    <div class="text-[10px] text-slate-600 font-mono mt-0.5">– 16:30</div>
+                </div>
+                <div class="w-px bg-rose-400/20 self-stretch flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-rose-400/70 bg-rose-400/10 px-2 py-0.5 rounded inline-block mb-1">Evening</span>
+                    <h4 class="font-heading font-semibold text-white text-sm">Networking Reception & Startup Showcase</h4>
+                </div>
+            </div>
+        </div> {% endcomment %}
+
+        <!-- CTA Button -->
+        <div class="reveal text-center mt-14">
+            <a href="{% url "schedule" %}" class="btn-primary"><span>View Full 3-Day Schedule</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <p class="text-xs text-slate-600 mt-3">Includes Day 2 & Day 3 — Technical Sessions, Country Presentations & Closing Ceremony</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================ -->
+<!-- 6. WHAT TO EXPECT                             -->
+<!-- ============================================ -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="float-shape w-72 h-72 bg-accent-purple -top-20 right-0" style="opacity:.15"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-cyan mb-4">What Awaits You</span>
+            <h2 class="reveal font-heading text-3xl md:text-5xl font-bold text-white mb-6">Why Attend <span class="gradient-text">STICONF 2026</span>?</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="reveal glass p-8 group"><div class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center mb-6 group-hover:bg-accent-cyan/20 transition-colors"><i data-lucide="microscope" class="w-6 h-6 text-accent-cyan"></i></div><h3 class="font-heading font-semibold text-white text-lg mb-3">Cutting-Edge Research Showcases</h3><p class="text-slate-500 text-sm leading-relaxed">Discover demand-driven research and indigenous technologies ready for market adoption and scaling.</p></div>
+            <div class="reveal glass p-8 group"><div class="w-12 h-12 rounded-xl bg-accent-purple/10 flex items-center justify-center mb-6 group-hover:bg-accent-purple/20 transition-colors"><i data-lucide="handshake" class="w-6 h-6 text-accent-purple"></i></div><h3 class="font-heading font-semibold text-white text-lg mb-3">Strategic Partnerships</h3><p class="text-slate-500 text-sm leading-relaxed">Forge meaningful connections with academia, industry leaders, policymakers, and investors.</p></div>
+            <div class="reveal glass p-8 group"><div class="w-12 h-12 rounded-xl bg-accent-amber/10 flex items-center justify-center mb-6 group-hover:bg-accent-amber/20 transition-colors"><i data-lucide="file-signature" class="w-6 h-6 text-accent-amber"></i></div><h3 class="font-heading font-semibold text-white text-lg mb-3">MOUs & Agreements</h3><p class="text-slate-500 text-sm leading-relaxed">Participate in live MOU signings and technology licensing discussions with real outcomes.</p></div>
+            <div class="reveal glass p-8 group"><div class="w-12 h-12 rounded-xl bg-accent-emerald/10 flex items-center justify-center mb-6 group-hover:bg-accent-emerald/20 transition-colors"><i data-lucide="lightbulb" class="w-6 h-6 text-accent-emerald"></i></div><h3 class="font-heading font-semibold text-white text-lg mb-3">Innovation Pitch Sessions</h3><p class="text-slate-500 text-sm leading-relaxed">Present your innovations to investors and industry leaders in curated pitch sessions.</p></div>
+            <div class="reveal glass p-8 group"><div class="w-12 h-12 rounded-xl bg-accent-blue/10 flex items-center justify-center mb-6 group-hover:bg-accent-blue/20 transition-colors"><i data-lucide="landmark" class="w-6 h-6 text-accent-blue"></i></div><h3 class="font-heading font-semibold text-white text-lg mb-3">Policy Influence</h3><p class="text-slate-500 text-sm leading-relaxed">Contribute to policy recommendations that shape Nigeria's STI ecosystem and regulatory frameworks.</p></div>
+            <div class="reveal glass p-8 group"><div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center mb-6 group-hover:bg-rose-500/20 transition-colors"><i data-lucide="map" class="w-6 h-6 text-rose-400"></i></div><h3 class="font-heading font-semibold text-white text-lg mb-3">Implementation Roadmap</h3><p class="text-slate-500 text-sm leading-relaxed">Walk away with a post-conference roadmap and stakeholder working groups for real impact.</p></div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================ -->
+<!-- 7. TARGET PARTICIPANTS                        -->
+<!-- ============================================ -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+        <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-purple mb-4">Who Should Attend</span>
+        <h2 class="reveal font-heading text-3xl md:text-5xl font-bold text-white mb-12">Target <span class="gradient-text">Participants</span></h2>
+        <div class="reveal flex flex-wrap justify-center gap-3 mb-16">
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-cyan/30 hover:bg-accent-cyan/5 transition-all cursor-default">🔬 Research Institutions</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-purple/30 hover:bg-accent-purple/5 transition-all cursor-default">🎓 Universities</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-blue/30 hover:bg-accent-blue/5 transition-all cursor-default">💡 Innovation Hubs</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-amber/30 hover:bg-accent-amber/5 transition-all cursor-default">🏭 Industrial Firms</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-emerald/30 hover:bg-accent-emerald/5 transition-all cursor-default">🚀 MSMEs & Startups</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-cyan/30 hover:bg-accent-cyan/5 transition-all cursor-default">🏛️ Government MDAs</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-purple/30 hover:bg-accent-purple/5 transition-all cursor-default">💰 Investors</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-blue/30 hover:bg-accent-blue/5 transition-all cursor-default">🌍 Development Partners</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-amber/30 hover:bg-accent-amber/5 transition-all cursor-default">📋 Professional Bodies</span>
+            <span class="px-5 py-3 rounded-full text-sm font-medium border border-white/10 text-slate-300 bg-white/[.02] hover:border-accent-emerald/30 hover:bg-accent-emerald/5 transition-all cursor-default">🤝 Industry Associations</span>
+        </div>
+        <div class="reveal"><a href="{% url "register" %}" class="btn-primary text-sm"><span>Secure Your Place Now</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================================ -->
+<!-- 8. SPONSORS / PARTNERS                        -->
+<!-- ============================================ -->
+<section class="relative py-20 md:py-28 overflow-hidden">
+    <div class="float-shape w-80 h-80 bg-accent-purple top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:.06"></div>
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14">
+            <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-amber mb-4">Our Partners</span>
+            <h2 class="reveal font-heading text-3xl md:text-4xl font-bold text-white mb-4">Supported by <span class="gradient-text">Leading Organisations</span></h2>
+            <p class="reveal text-slate-500 text-sm max-w-xl mx-auto">STICONF 2026 is proudly supported by government agencies, academic institutions, industry leaders, and international development partners.</p>
+        </div>
+
+        <!-- Row 1 — scrolls left -->
+        <div class="reveal marquee-wrapper mb-6">
+            <div class="marquee-track left">
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982227/accessbank_ygxfa7.jpg" alt="Bank of Industry" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Nigeria Universities Commision</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982227/abu_fi4pra.jpg" alt="African Development Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Pictt</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982226/afdb_mgjm3q.jpg" alt="UNESCO" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Rmdrc</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982226/boi_dqknbu.jpg" alt="World Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">PTDF</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cbn_t7h6lx.jpg" alt="GIZ Nigeria" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Wendy</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/bua_oiaznj.jpg" alt="UKAID" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NASRDA</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/dangote_ztner6.jpg" alt="FCMB" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Naseni</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cchub_hd6psl.jpg" alt="Flutterwave" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Alpha Helix</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cchub_hd6psl.jpg" alt="Paystack" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Steel Development</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/futa_s8kebp.jpg" alt="Co-Creation Hub" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Energy Commision</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/giz_lqibrf.jpg" alt="Ventures Platform" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NBRR</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/notap_kflt1f.jpg" alt="Access Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Nasra</span></div>
+                <!-- Duplicates for seamless loop -->
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/paystack_sbf8d2.jpg" alt="Bank of Industry" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Leather and science</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/unesco_ivaxog.jpg}" alt="African Development Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Technology</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/unilag_mxqi4o.jpg" alt="UNESCO" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Engineers</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/shell_mvkqib.jpg" alt="World Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NBTI</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/worldbank_jkb358.jpg" alt="GIZ Nigeria" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Education</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/naseni_euy8fp.jpg" alt="UKAID" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Welcome To Nigeria</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/venturesplatform_u5281f.jpg" alt="FCMB" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">SHETESCO</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/nitda_hz9szr.jpg" alt="Flutterwave" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Flutterwave</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cbn_t7h6lx.jpg" alt="Paystack" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Wendi</span></div>
+                <div class="sponsor-logo"><img src="{% static 'images/sponsors/cchub.jpg' %}" alt="Co-Creation Hub" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Co-Creation Hub</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/giz_lqibrf.jpg" alt="Ventures Platform" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Ventures Platform</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cbn_t7h6lx.jpg" alt="Access Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Wendi</span></div>
+            </div>
+        </div>
+
+        <!-- Row 2 — scrolls right -->
+        <div class="reveal marquee-wrapper">
+            <div class="marquee-track right">
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982227/accessbank_ygxfa7.jpg" alt="Bank of Industry" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Nigeria Universities Commision</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982227/abu_fi4pra.jpg" alt="African Development Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Pictt</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982226/afdb_mgjm3q.jpg" alt="UNESCO" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Rmdrc</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982226/boi_dqknbu.jpg" alt="World Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">PTDF</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cbn_t7h6lx.jpg" alt="GIZ Nigeria" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Wendy</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/bua_oiaznj.jpg" alt="UKAID" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NASRDA</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/dangote_ztner6.jpg" alt="FCMB" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Naseni</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cchub_hd6psl.jpg" alt="Flutterwave" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Alpha Helix</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982218/cchub_hd6psl.jpg" alt="Paystack" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Steel Development</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/futa_s8kebp.jpg" alt="Co-Creation Hub" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Energy Commision</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/giz_lqibrf.jpg" alt="Ventures Platform" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NBRR</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982217/notap_kflt1f.jpg" alt="Access Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Nasra</span></div>
+                <!-- Duplicates for seamless loop -->
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/paystack_sbf8d2.jpg" alt="Bank of Industry" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Leather and science</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/unesco_ivaxog.jpg}" alt="African Development Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Technology</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/unilag_mxqi4o.jpg" alt="UNESCO" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Engineers</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982216/shell_mvkqib.jpg" alt="World Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">NBTI</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/worldbank_jkb358.jpg" alt="GIZ Nigeria" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Education</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/naseni_euy8fp.jpg" alt="UKAID" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Welcome To Nigeria</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/venturesplatform_u5281f.jpg" alt="FCMB" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">SHETESCO</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1776982215/nitda_hz9szr.jpg" alt="Flutterwave" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Flutterwave</span></div>
+                <div class="sponsor-logo"><img src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777462760/BOI_High-_Resolution_Logo_kc3qjv.jpg" alt="Paystack" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Bank Of Industry</span></div>
+                <div class="sponsor-logo"><img src="{% static 'images/sponsors/cchub.jpg' %}" alt="Co-Creation Hub" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Co-Creation Hub</span></div>
+                <div class="sponsor-logo"><img src="{% static 'images/sponsors/venturesplatform.jpg' %}" alt="Ventures Platform" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Ventures Platform</span></div>
+                <div class="sponsor-logo"><img src="{% static 'images/sponsors/accessbank.jpg' %}" alt="Access Bank" class="w-9 h-9 object-contain rounded bg-white/5"><span class="logo-name">Access Bank</span></div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="reveal text-center mt-12">
+            <a href="{% url "sponsorship" %}" class="btn-outline text-xs"><span>Become a Sponsor</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative py-16 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="lg:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <svg viewBox="0 0 100 100" fill="none" class="w-10 h-10"><polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="url(#fg)" stroke-width="2" fill="none"/><text x="50" y="46" text-anchor="middle" fill="#00b4d8" font-family="Space Grotesk" font-size="18" font-weight="700">STI</text><text x="50" y="62" text-anchor="middle" fill="#7c3aed" font-family="Space Grotesk" font-size="10" font-weight="500">CONF</text><defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00b4d8"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs></svg>
+                    <div><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF 2026</span><p class="text-[10px] text-slate-500 tracking-widest uppercase">Science · Technology · Innovation</p></div>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-4">The International Conference on Science, Technology and Innovation — catalysing effective linkages between research institutions and industry.</p>
+                <p class="text-xs text-slate-600">June 16–18, 2026 · Alero Azazi Center, Asokoro, Abuja</p>
+            </div>
+            <div>
+                <h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="{% url "home" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Home</a></li>
+                    <li><a href="{% url "about" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">About</a></li>
+                    <li><a href="{% url "schedule" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Schedule</a></li>
+                    <li><a href="{% url "sponsorship" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Sponsorship</a></li>
+                    <li><a href="{% url "register" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Registration</a></li>
+                    <li><a href="{% url "contact" %}" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-heading font-semibold text-white text-sm mb-4 uppercase tracking-wider">Connect</h4>
+                <ul class="space-y-3">
+                    <li><a href="https://x.com/sticonf/status/1811851958514569350" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-3.5 h-3.5"></i>Twitter / X</a></li>
+                    <li><a href="https://www.instagram.com/sticonference/" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-3.5 h-3.5"></i>Instagram</a></li>
+                    <li><a href="https://ng.linkedin.com/in/sticonf-sti-60451a335" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i>LinkedIn</a></li>
+                    <li><a href="https://www.facebook.com/STICONF/" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-3.5 h-3.5"></i>Facebook</a></li>
+                </ul>
+                <div class="mt-6"><a href="mailto:info@sticonf.com" class="text-slate-500 text-sm hover:text-accent-cyan transition-colors">info@sticonf.com</a></div>
+            </div>
+        </div>
+        <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-600">&copy; 2025 STICONF. All rights reserved.</p>
+            <p class="text-xs text-slate-700">International Conference on Science, Technology & Innovation</p>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast"><i data-lucide="check-circle" class="w-5 h-5"></i><span id="toastMsg">Success!</span></div>
+
+<script>
+/* ===== PARTICLES ===== */
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let particles=[],mouse={x:null,y:null};
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resizeCanvas();window.addEventListener('resize',()=>{resizeCanvas();initParticles()});
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+window.addEventListener('mouseout',()=>{mouse.x=null;mouse.y=null});
+class Particle{constructor(){this.reset()}reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*1.5+.5;this.speedX=(Math.random()-.5)*.3;this.speedY=(Math.random()-.5)*.3;this.opacity=Math.random()*.5+.1}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x<0||this.x>canvas.width)this.speedX*=-1;if(this.y<0||this.y>canvas.height)this.speedY*=-1}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`rgba(0,180,216,${this.opacity})`;ctx.fill()}}
+function initParticles(){const c=Math.min(Math.floor(canvas.width*canvas.height/15000),80);particles=[];for(let i=0;i<c;i++)particles.push(new Particle)}
+initParticles();
+function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(0,180,216,${.06*(1-dist/150)})`;ctx.lineWidth=.5;ctx.stroke()}}if(mouse.x&&mouse.y){const dx=particles[i].x-mouse.x,dy=particles[i].y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<200){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(mouse.x,mouse.y);ctx.strokeStyle=`rgba(124,58,237,${.15*(1-dist/200)})`;ctx.lineWidth=.5;ctx.stroke()}}}requestAnimationFrame(animateParticles)}
+animateParticles();
+
+/* ===== LOADER ===== */
+const loaderBar=document.getElementById('loaderBar'),loaderText=document.querySelector('.loader-text span'),loaderSub=document.querySelector('.loader-sub');let progress=0;
+const loaderTL=gsap.timeline();loaderTL.to(loaderText,{y:'0%',opacity:1,duration:.8,ease:'power3.out',delay:.3}).to(loaderSub,{opacity:1,duration:.6},'-=.3');
+const progressInterval=setInterval(()=>{progress+=Math.random()*15+5;if(progress>100)progress=100;loaderBar.style.width=progress+'%';if(progress>=100){clearInterval(progressInterval);setTimeout(()=>{gsap.to('#loader',{opacity:0,duration:.6,onComplete:()=>{document.getElementById('loader').classList.add('hidden');initAnimations();startSlideshow()}})},400)}},200);
+
+/* ===== SMOOTH SCROLL ===== */
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smooth:true});
+function raf(time){lenis.raf(time);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(time=>lenis.raf(time*1000));gsap.ticker.lagSmoothing(0);
+
+/* ===== NAVBAR SCROLL ===== */
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);document.getElementById('scrollProgress').style.transform=`scaleX(${p})`});
+
+/* ===== MOBILE MENU ===== */
+let menuOpen=false;
+function toggleMobile(){menuOpen=!menuOpen;document.getElementById('mobile-menu').classList.toggle('open',menuOpen);const b1=document.getElementById('bar1'),b2=document.getElementById('bar2'),b3=document.getElementById('bar3');if(menuOpen){b1.style.transform='rotate(45deg) translate(4px,4px)';b2.style.opacity='0';b3.style.transform='rotate(-45deg) translate(4px,-4px)';b3.style.width='24px'}else{b1.style.transform='';b2.style.opacity='1';b3.style.transform='';b3.style.width='16px'}document.body.style.overflow=menuOpen?'hidden':''}
+function closeMobile(){if(menuOpen)toggleMobile()}
+
+/* ===== HERO SLIDESHOW ===== */
+let currentSlide=0;const totalSlides=4;const slideDuration=6000;let slideTimer=null;let slideProgress=0;let progressRAF=null;
+const slides=document.querySelectorAll('.hero-slide');const dots=document.querySelectorAll('.hero-dot');const progressBar=document.getElementById('heroProgress');
+
+function goToSlide(index){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=index;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active');resetProgress()}
+function heroNav(dir){let next=currentSlide+dir;if(next<0)next=totalSlides-1;if(next>=totalSlides)next=0;goToSlide(next)}
+function heroGoTo(index){goToSlide(index)}
+function resetProgress(){slideProgress=0;progressBar.style.width='0%'}
+function updateProgress(){slideProgress+=16;if(slideProgress>=slideDuration){heroNav(1)}else{progressBar.style.width=(slideProgress/slideDuration*100)+'%'}}
+function startSlideshow(){if(progressRAF)cancelAnimationFrame(progressRAF);progressRAF=setInterval(updateProgress,16)}
+
+/* ===== SCROLL ANIMATIONS ===== */
+function initAnimations(){gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.reveal').forEach((el,i)=>{gsap.fromTo(el,{opacity:0,y:40},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},delay:i%3*.1})});
+document.querySelectorAll('.counter-value').forEach(counter=>{const target=parseInt(counter.dataset.target);ScrollTrigger.create({trigger:counter,start:'top 85%',onEnter:()=>{gsap.to({val:0},{val:target,duration:2,ease:'power2.out',onUpdate:function(){counter.textContent=Math.floor(this.targets()[0].val)+(target>=100?'+':'')}})},once:true})})}
+
+/* ===== TOAST ===== */
+function showToast(msg,isError=false){const t=document.getElementById('toast'),m=document.getElementById('toastMsg');m.textContent=msg;t.classList.toggle('error',isError);t.querySelector('i').setAttribute('data-lucide',isError?'alert-circle':'check-circle');lucide.createIcons();t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
+
+lucide.createIcons();
+</script>
+</body>
+</html>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -377,3 +1114,5 @@ lucide.createIcons();
 </script>
 </body>
 </html>
+
+
