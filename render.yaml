@@ -9,3 +9,17 @@ services:
     envVars:
       - key: DEBUG
         value: "False"
+      - key: ALLOWED_HOSTS
+        value: "sticonf.onrender.com, www.sticonf.com"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://sticonf.onrender.com, https://sticonf.com"
+      - key: BREVO_API_KEY
+        value: "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"
+      - key: BREVO_LIST_ID
+        value: "2"
+      - key: BREVO_SMTP_USER
+        value: "a85adf001@smtp-brevo.com"
+      - key: BREVO_SMTP_PASSWORD
+        value: "xsmtpsib-eb48300c68b5bd82f7a25d9eb92cd06969b932493e6767556e9a4404dc27b690-qcDJrceXozAubRd8"
+      - key: ADMIN_EMAIL
+        value: "sticonfinternational@gmail.com"
