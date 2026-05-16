@@ -45,6 +45,13 @@
         textarea.form-input{resize:vertical;min-height:80px}
         .toast{position:fixed;bottom:32px;right:32px;z-index:10000;padding:16px 24px;border-radius:12px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:#10b981;font-size:14px;font-weight:500;transform:translateY(120%);opacity:0;transition:all .5s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:10px;backdrop-filter:blur(12px)}.toast.show{transform:translateY(0);opacity:1}.toast.error{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:#ef4444}
         ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#050816}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+        .hero-image-container {
+    transition: transform 0.5s cubic-bezier(.16,1,.3,1), box-shadow 0.5s cubic-bezier(.16,1,.3,1);
+    }
+    .hero-image-container:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 25px 60px -15px rgba(124, 58, 237, 0.2);
+    }
     </style>
 </head>
 <body>
@@ -55,9 +62,41 @@
 <nav id="navbar"><div class="max-w-7xl mx-auto px-6 flex items-center justify-between"><a href="{% url "home" %}" class="flex items-center gap-3 group"><img src="{% static 'images/logo.png' %}" alt="STICONF Logo" class="w-8 h-8 object-contain group-hover:rotate-12 transition-transform"><span class="font-heading font-bold text-white text-sm tracking-wider">STICONF <span class="text-accent-cyan">2026</span></span></a><div class="hidden lg:flex items-center gap-8"><a href="{% url "home" %}" class="nav-link">Home</a><a href="{% url "about" %}" class="nav-link">About</a><a href="{% url "schedule" %}" class="nav-link">Schedule</a><a href="{% url "sponsorship" %}" class="nav-link">Sponsorship</a><a href="{% url "register" %}" class="nav-link active">Registration</a><a href="{% url "contact" %}" class="nav-link">Contact</a></div><div class="hidden lg:block"><a href="{% url "register" %}" class="btn-primary text-xs"><span>Register Now</span></a></div><button class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" onclick="toggleMobile()"><span class="w-6 h-0.5 bg-white transition-all duration-300 origin-center" id="bar1"></span><span class="w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span><span class="w-4 h-0.5 bg-white transition-all duration-300 origin-center" id="bar3"></span></button></div></nav>
 
 <!-- PAGE HERO -->
+
+<!-- PAGE HERO -->
+
 <section class="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
     <div class="float-shape w-96 h-96 bg-accent-emerald top-0 -left-48" style="opacity:.1"></div>
     <div class="float-shape w-72 h-72 bg-accent-cyan bottom-0 -right-36" style="opacity:.08"></div>
+    
+    <!-- Centered Styled Image -->
+    <div class="max-w-4xl mx-auto px-6 mb-12">
+        <div class="reveal relative mx-auto" style="max-width: 700px;">
+            <!-- Glow effect behind image -->
+            <div class="absolute -inset-4 bg-gradient-to-r from-accent-cyan/20 via-accent-purple/20 to-accent-cyan/20 rounded-2xl blur-xl opacity-60"></div>
+            
+            <!-- Image container -->
+            <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-accent-purple/10">
+                <img 
+                    src="https://res.cloudinary.com/dfwpgtli5/image/upload/v1777360357/IMG-20260424-WA0049_qohdaq.jpg" 
+                    alt="STICONF Conference Panel Discussion" 
+                    class="w-full h-auto object-cover block"
+                    style="aspect-ratio: 16/10;"
+                >
+                <!-- Subtle gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900/30 via-transparent to-transparent pointer-events-none"></div>
+                
+                <!-- Optional: Image caption badge -->
+                <div class="absolute bottom-4 left-4 right-4 flex items-center gap-2">
+                    <div class="px-3 py-1.5 rounded-lg bg-dark-900/80 backdrop-blur-md border border-white/10 flex items-center gap-2">
+                        <i data-lucide="users" class="w-3.5 h-3.5 text-accent-cyan"></i>
+                        <span class="text-xs text-slate-300 font-medium">Panel Discussions at STICONF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
         <span class="reveal inline-block text-xs font-mono tracking-[4px] uppercase text-accent-emerald mb-6">Secure Your Spot</span>
         <h1 class="reveal font-heading font-bold leading-[1.05] tracking-tight mb-6" style="font-size:clamp(2.2rem,5.5vw,4.5rem)">Register for <span class="gradient-text">STICONF 2026</span></h1>
@@ -68,6 +107,7 @@
 <div class="section-divider"></div>
 
 <!-- REGISTRATION FORM -->
+
 <section class="relative py-16 md:py-24 overflow-hidden">
     <div class="max-w-3xl mx-auto px-6">
         
